@@ -1,36 +1,37 @@
-# Pokémon Emerald
+# Pokémon Emerald Decomp Fan Game
 
-[![Build Status][travis-badge]][travis]
+## Features
 
-[travis]: https://travis-ci.org/pret/pokeemerald
-[travis-badge]: https://travis-ci.org/pret/pokeemerald.svg?branch=master
+- [Battle Engine Upgrade](https://www.pokecommunity.com/showthread.php?t=417820)
 
-This is a decompilation of Pokémon Emerald.
+- [Pokemon Expansion](https://www.pokecommunity.com/showthread.php?t=420028)
 
-It builds the following ROM:
+- [Item expansion](https://www.pokecommunity.com/showthread.php?t=421090)
 
-* [**pokeemerald.gba**](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=1961) `sha1: f3ae088181bf583e55daf962a92bb46f4f1d07b7`
+## Bugs
 
-To set up the repository, see [INSTALL.md](INSTALL.md).
+- Stat effects (growl, tail whip) don't create an animation layer overtop the Pokémon. Sound still plays and stats should be affected nonetheless.
 
+## Wikis, Guides and Resources
 
-## See also
+Decomp Resources: https://www.pokecommunity.com/forumdisplay.php?fn=decomp-resources
 
-Other disassembly and/or decompilation projects:
-* [**Pokémon Red and Blue**](https://github.com/pret/pokered)
-* [**Pokémon Gold and Silver (Space World '97 demo)**](https://github.com/pret/pokegold-spaceworld)
-* [**Pokémon Yellow**](https://github.com/pret/pokeyellow)
-* [**Pokémon Trading Card Game**](https://github.com/pret/poketcg)
-* [**Pokémon Pinball**](https://github.com/pret/pokepinball)
-* [**Pokémon Stadium**](https://github.com/pret/pokestadium)
-* [**Pokémon Gold and Silver**](https://github.com/pret/pokegold)
-* [**Pokémon Crystal**](https://github.com/pret/pokecrystal)
-* [**Pokémon Ruby and Sapphire**](https://github.com/pret/pokeruby)
-* [**Pokémon Pinball: Ruby & Sapphire**](https://github.com/pret/pokepinballrs)
-* [**Pokémon FireRed and LeafGreen**](https://github.com/pret/pokefirered)
-* [**Pokémon Mystery Dungeon: Red Rescue Team**](https://github.com/pret/pmd-red)
+Decomp Help: https://www.pokecommunity.com/forumdisplay.php?fn=decomp
 
+pokeemerald Wiki: https://github.com/pret/pokeemerald/wiki
 
-## Contacts
+Porymap Wiki: https://huderlem.github.io/porymap/index.html
 
-You can find us on [Discord](https://discord.gg/d5dubZ3) and [IRC](https://kiwiirc.com/client/irc.freenode.net/?#pret).
+Poryscript Playground: https://www.huderlem.com/poryscript-playground/
+
+pokeemerald tutorials: [Building on Windows](https://www.pokecommunity.com/showthread.php?t=432351), [All in one tool](https://www.pokecommunity.com/showthread.php?p=10307292), [Building on pokeemerald](https://www.pokecommunity.com/showthread.php?t=432321)
+
+4chan /vp/ thread: https://boards.4channel.org/vp/thread/46596384
+
+Emerald Enhanced (A Romhack made using the same tools): https://www.pokecommunity.com/showthread.php?t=416925
+
+Pokémon Frontier Adventure (Same as Emerald Enhanced): https://www.pokecommunity.com/showthread.php?t=442844
+
+## Credit
+
+[pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
