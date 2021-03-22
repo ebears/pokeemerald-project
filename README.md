@@ -1,21 +1,26 @@
 # Emerald
 ## Features
 
+### General
 - [Battle Engine Upgrade](https://www.pokecommunity.com/showthread.php?t=417820)
 - [Pokemon Expansion](https://www.pokecommunity.com/showthread.php?t=420028)
-- [Item expansion](https://www.pokecommunity.com/showthread.php?t=421090)
+- [Item Expansion](https://www.pokecommunity.com/showthread.php?t=421090)
+
+### Enhancements
 - [Nature-Affected Summary Stats Colouring](https://www.pokecommunity.com/showthread.php?p=10024409#post10024409)
-- [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
-- [Surf Dismounting Visual Bug Fix](https://github.com/pret/pokeemerald/wiki/Surfing-Dismount-Ground-Effects)
 - [Nicknaming from Party Screen](https://www.pokecommunity.com/showthread.php?p=10120389#post10120389)
 - [Item Descriptions](https://www.pokecommunity.com/showthread.php?p=10126502#post10126502)
-- [Emerald Broken RNG Fix](https://www.pokecommunity.com/showthread.php?p=10127870#post10127870)
 - [Items can be registered to L and R](https://www.pokecommunity.com/showthread.php?p=10134388#post10134388)
 - ['Run' while Surfing](https://www.pokecommunity.com/showthread.php?p=10137446#post10137446)
 
+### Fixes
+- [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
+- [Surf Dismounting Visual Bug Fix](https://github.com/pret/pokeemerald/wiki/Surfing-Dismount-Ground-Effects)
+- [Emerald Broken RNG Fix](https://www.pokecommunity.com/showthread.php?p=10127870#post10127870)
+
 ## Bugs
 
-- Stat effects (growl, tail whip) don't create an animation layer overtop the Pokémon. Sound still plays and stats should be affected nonetheless.
+- Stat moves (Growl, Tail Whip, etc.) don't cause any sort of visual overtop the Pokémon. Sound still plays and stats should be affected nonetheless.
 
 ## Wikis, Guides and Resources
 
