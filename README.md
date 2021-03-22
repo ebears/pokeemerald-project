@@ -12,6 +12,7 @@
 - [Item Descriptions](https://www.pokecommunity.com/showthread.php?p=10126502#post10126502)
 - [Items can be registered to L and R](https://www.pokecommunity.com/showthread.php?p=10134388#post10134388)
 - ['Run' while Surfing](https://www.pokecommunity.com/showthread.php?p=10137446#post10137446)
+- [Press 'L/R/Start' on a Pokemon's stats screen to switch between IVs/EVs/stats](https://www.pokecommunity.com/showthread.php?p=10161688#post10161688)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
