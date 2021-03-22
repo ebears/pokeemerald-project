@@ -17,6 +17,7 @@
 - [Running Shoes Indoors](https://www.pokecommunity.com/showthread.php?p=9990848#post9990848)
 - [Type Effectiveness Colouring In-Battle](https://www.pokecommunity.com/showthread.php?p=10167016#post10167016)
 - [DS-Style Party Screen](https://www.pokecommunity.com/showthread.php?p=10218092#post10218092)
+- [LGPE-Style Premier Balls (obtainable from any incremental amount of 10 from any ball)](https://www.pokecommunity.com/showthread.php?p=10178662#post10178662)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
