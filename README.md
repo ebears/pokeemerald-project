@@ -4,6 +4,7 @@
 - [Battle Engine Upgrade](https://www.pokecommunity.com/showthread.php?t=417820)
 - [Pokemon Expansion](https://www.pokecommunity.com/showthread.php?t=420028)
 - [Item expansion](https://www.pokecommunity.com/showthread.php?t=421090)
+- [Nature-Affected Summary Stats Colouring](https://www.pokecommunity.com/showthread.php?p=10024409#post10024409)
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
 - [Surf Dismounting Visual Bug Fix](https://github.com/pret/pokeemerald/wiki/Surfing-Dismount-Ground-Effects)
 
