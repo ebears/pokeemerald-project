@@ -13,13 +13,13 @@
 - [Items can be registered to L and R](https://www.pokecommunity.com/showthread.php?p=10134388#post10134388)
 - ['Run' while Surfing](https://www.pokecommunity.com/showthread.php?p=10137446#post10137446)
 - [Press 'L/R/Start' on a Pokemon's stats screen to switch between IVs/EVs/stats](https://www.pokecommunity.com/showthread.php?p=10161688#post10161688)
+- [Automatically switching to lower case after first input in the naming screen](https://www.pokecommunity.com/showthread.php?p=10199896#post10199896)
 - [Running Shoes Indoors](https://www.pokecommunity.com/showthread.php?p=9990848#post9990848)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
 - [Surf Dismounting Visual Bug Fix](https://github.com/pret/pokeemerald/wiki/Surfing-Dismount-Ground-Effects)
 - [Emerald Broken RNG Fix](https://www.pokecommunity.com/showthread.php?p=10127870#post10127870)
-- [Automatically switching to lower case after first input in the naming screen](https://www.pokecommunity.com/showthread.php?p=10199896#post10199896)
 
 ## Bugs
 
