@@ -932,7 +932,7 @@ struct SaveBlock1
     /*0x238*/ struct Pokemon playerParty[PARTY_SIZE];
     /*0x490*/ u32 money;
     /*0x494*/ u16 coins;
-    /*0x496*/ u16 registeredItem; // registered for use with SELECT button
+    /*0x496*/ u16 registeredItemSelect;
     /*0x498*/ struct ItemSlot pcItems[PC_ITEMS_COUNT];
     /*0x560*/ struct ItemSlot bagPocket_Items[BAG_ITEMS_COUNT];
     /*0x5D8*/ struct ItemSlot bagPocket_KeyItems[BAG_KEYITEMS_COUNT];
@@ -993,15 +993,20 @@ struct SaveBlock1
     /*0x322C*/ struct MEventBuffers unk_322C;
     /*0x3???*/ u8 dexSeen[DEX_FLAGS_NO];
     /*0x3???*/ u8 dexCaught[DEX_FLAGS_NO];
-    /*0x3???*/ u32 trainerHillTimes[4];
-    /*0x3???*/ struct RamScript ramScript;
-    /*0x3???*/ struct RecordMixingGift recordMixingGift;
-    /*0x3???*/ LilycoveLady lilycoveLady;
-    /*0x3???*/ struct TrainerNameRecord trainerNameRecords[20];
-    /*0x3???*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];
-    /*0x3???*/ struct SaveTrainerHill trainerHill;
-    /*0x3???*/ struct WaldaPhrase waldaPhrase;
-    // sizeof: 0x3???
+    /*0x3598*/ u8 field_3598[0x180];
+    /*0x3718*/ u32 trainerHillTimes[4];
+    /*0x3728*/ struct RamScript ramScript;
+    /*0x3B14*/ struct RecordMixingGift recordMixingGift;
+    /*0x3B24*/ u8 seen2[DEX_FLAGS_NO];
+    /*0x3B58*/ LilycoveLady lilycoveLady;
+    /*0x3B98*/ struct TrainerNameRecord trainerNameRecords[20];
+    /*0x3C88*/ u8 registeredTexts[UNION_ROOM_KB_ROW_COUNT][21];
+    /*0x3D5A*/ u8 filler3D5A[0xA];
+    /*0x3D64*/ struct SaveTrainerHill trainerHill;
+    /*0x3D70*/ struct WaldaPhrase waldaPhrase;
+    /*0x3D88*/ u16 registeredItemL;
+    /*0x3D8A*/ u16 registeredItemR;
+    // sizeof: 0x3D8C
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;
