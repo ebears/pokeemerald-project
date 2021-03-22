@@ -6,7 +6,7 @@
 - [Pokemon Expansion](https://www.pokecommunity.com/showthread.php?t=420028)
 - [Item Expansion](https://www.pokecommunity.com/showthread.php?t=421090)
 
-### Enhancements
+### Improvements and QOL
 - [Nature-Affected Summary Stats Colouring](https://www.pokecommunity.com/showthread.php?p=10024409#post10024409)
 - [Nicknaming from Party Screen](https://www.pokecommunity.com/showthread.php?p=10120389#post10120389)
 - [Item Descriptions](https://www.pokecommunity.com/showthread.php?p=10126502#post10126502)
