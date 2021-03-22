@@ -1,5 +1,4 @@
-# Pokémon Emerald Decomp Fan Game
-
+# Emerald
 ## Features
 
 - [Battle Engine Upgrade](https://www.pokecommunity.com/showthread.php?t=417820)
