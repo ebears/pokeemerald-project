@@ -45,6 +45,6 @@ Emerald Enhanced (A Romhack made using the same tools): https://www.pokecommunit
 
 Pokémon Frontier Adventure (Same as Emerald Enhanced): https://www.pokecommunity.com/showthread.php?t=442844
 
-## Credit
+## Credit (Unfinished - Check out individual Feature links)
 
 [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion)
