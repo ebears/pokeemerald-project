@@ -8,6 +8,7 @@
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
 - [Surf Dismounting Visual Bug Fix](https://github.com/pret/pokeemerald/wiki/Surfing-Dismount-Ground-Effects)
 - [Nicknaming from Party Screen](https://www.pokecommunity.com/showthread.php?p=10120389#post10120389)
+- [Item Descriptions](https://www.pokecommunity.com/showthread.php?p=10126502#post10126502)
 
 ## Bugs
 
