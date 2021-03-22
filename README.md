@@ -11,6 +11,7 @@
 - [Item Descriptions](https://www.pokecommunity.com/showthread.php?p=10126502#post10126502)
 - [Emerald Broken RNG Fix](https://www.pokecommunity.com/showthread.php?p=10127870#post10127870)
 - [Items can be registered to L and R](https://www.pokecommunity.com/showthread.php?p=10134388#post10134388)
+- ['Run' while Surfing](https://www.pokecommunity.com/showthread.php?p=10137446#post10137446)
 
 ## Bugs
 
