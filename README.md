@@ -15,7 +15,7 @@
 - [Press 'L/R/Start' on a Pokemon's stats screen to switch between IVs/EVs/stats](https://www.pokecommunity.com/showthread.php?p=10161688#post10161688)
 - [Automatically switching to lower case after first input in the naming screen](https://www.pokecommunity.com/showthread.php?p=10199896#post10199896)
 - [Running Shoes Indoors](https://www.pokecommunity.com/showthread.php?p=9990848#post9990848)
-- [Type Effectiveness In-Battle](https://www.pokecommunity.com/showthread.php?p=10167016#post10167016)
+- [Type Effectiveness Colouring In-Battle](https://www.pokecommunity.com/showthread.php?p=10167016#post10167016)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
