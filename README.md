@@ -18,6 +18,7 @@
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
 - [Surf Dismounting Visual Bug Fix](https://github.com/pret/pokeemerald/wiki/Surfing-Dismount-Ground-Effects)
 - [Emerald Broken RNG Fix](https://www.pokecommunity.com/showthread.php?p=10127870#post10127870)
+- [Automatically switching to lower case after first input in the naming screen](https://www.pokecommunity.com/showthread.php?p=10199896#post10199896)
 
 ## Bugs
 
