@@ -21,7 +21,7 @@
 - [LGPE-Style Premier Balls (obtainable from any incremental amount of 10 from any ball)](https://www.pokecommunity.com/showthread.php?p=10178662#post10178662)
 - [Gen 5+ Style Removed Extra Save Game Confirmation](https://www.pokecommunity.com/showpost.php?p=10211835&postcount=156)
 - [Much Faster Nurse Joy](https://www.pokecommunity.com/showpost.php?p=10213415&postcount=164)
-- [Changed Default Options to my Preferences (Text Speed: fast, Set Mode, Stereo])(https://www.pokecommunity.com/showpost.php?p=9967853&postcount=5)
+- [Changed Default Options to my Preferences (Text Speed: fast, Set Mode, Stereo)](https://www.pokecommunity.com/showpost.php?p=9967853&postcount=5)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
