@@ -5,6 +5,7 @@
 - [Battle Engine Upgrade](https://www.pokecommunity.com/showthread.php?t=417820)
 - [Pokemon Expansion](https://www.pokecommunity.com/showthread.php?t=420028)
 - [Item Expansion](https://www.pokecommunity.com/showthread.php?t=421090)
+- [HGSS-Style 'PokedexPlus'](https://www.pokecommunity.com/showthread.php?t=441996)
 
 ### Improvements and QOL
 - [Nature-Affected Summary Stats Colouring](https://www.pokecommunity.com/showthread.php?p=10024409#post10024409)
@@ -18,14 +19,15 @@
 - [Type Effectiveness Colouring In-Battle](https://www.pokecommunity.com/showthread.php?p=10167016#post10167016)
 - [DS-Style Party Screen](https://www.pokecommunity.com/showthread.php?p=10218092#post10218092)
 - [LGPE-Style Premier Balls (obtainable from any incremental amount of 10 from any ball)](https://www.pokecommunity.com/showthread.php?p=10178662#post10178662)
-- [HGSS-Style 'PokedexPlus'](https://www.pokecommunity.com/showthread.php?t=441996)
 - [Gen 5+ Style Removed Extra Save Game Confirmation](https://www.pokecommunity.com/showpost.php?p=10211835&postcount=156)
 - [Much Faster Nurse Joy](https://www.pokecommunity.com/showpost.php?p=10213415&postcount=164)
+- [Changed Default Options to my Preferences (Text Speed: fast, Set mode, Stereo](https://www.pokecommunity.com/showpost.php?p=9967853&postcount=5)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
 - [Surf Dismounting Visual Bug Fix](https://github.com/pret/pokeemerald/wiki/Surfing-Dismount-Ground-Effects)
 - [Emerald Broken RNG Fix](https://www.pokecommunity.com/showthread.php?p=10127870#post10127870)
+- [Items can be recieved in plurals](https://www.pokecommunity.com/showpost.php?p=10177314&postcount=107)
 
 ## Bugs
 
