@@ -27,7 +27,7 @@
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
 - [Surf Dismounting Visual Bug Fix](https://github.com/pret/pokeemerald/wiki/Surfing-Dismount-Ground-Effects)
 - [Emerald Broken RNG Fix](https://www.pokecommunity.com/showthread.php?p=10127870#post10127870)
-- [Items can be recieved in plurals](https://www.pokecommunity.com/showpost.php?p=10177314&postcount=107)
+- [Items have the ability to be recieved in plurals](https://www.pokecommunity.com/showpost.php?p=10177314&postcount=107)
 
 ## Bugs
 
