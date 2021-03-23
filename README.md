@@ -19,6 +19,7 @@
 - [DS-Style Party Screen](https://www.pokecommunity.com/showthread.php?p=10218092#post10218092)
 - [LGPE-Style Premier Balls (obtainable from any incremental amount of 10 from any ball)](https://www.pokecommunity.com/showthread.php?p=10178662#post10178662)
 - [HGSS-Style 'PokedexPlus'](https://www.pokecommunity.com/showthread.php?t=441996)
+- [Gen 5+ Style Removed Extra Save Game Confirmation](https://www.pokecommunity.com/showpost.php?p=10211835&postcount=156)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
