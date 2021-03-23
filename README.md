@@ -22,6 +22,7 @@
 - [Gen 5+ Style Removed Extra Save Game Confirmation](https://www.pokecommunity.com/showpost.php?p=10211835&postcount=156)
 - [Much Faster Nurse Joy](https://www.pokecommunity.com/showpost.php?p=10213415&postcount=164)
 - [Changed Default Options to my Preferences (Text Speed: Fast, Set Mode, Stereo Audio)](https://www.pokecommunity.com/showpost.php?p=9967853&postcount=5)
+- [Pokemon Centers Disregard Eggs During Healing Animations](https://github.com/pret/pokeemerald/wiki/Pokecenters-Disregard-Eggs)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
