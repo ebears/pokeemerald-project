@@ -4227,13 +4227,18 @@ static const struct TrainerMonNoItemCustomMoves sParty_Calvin1[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_Billy[] = {
     {
     .iv = 0,
-    .lvl = 5,
+    .lvl = 8,
     .species = SPECIES_ZIGZAGOON,
     },
     {
     .iv = 0,
-    .lvl = 7,
+    .lvl = 9,
     .species = SPECIES_SEEDOT,
+    },
+    {
+    .iv = 0,
+    .lvl = 11,
+    .species = SPECIES_CHEWTLE,
     }
 };
 
