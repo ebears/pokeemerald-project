@@ -2,6 +2,7 @@
 #include "constants/apprentice.h"
 #include "constants/battle.h"
 #include "constants/battle_arena.h"
+#include "constants/battle_config.h"
 #include "constants/battle_dome.h"
 #include "constants/battle_factory.h"
 #include "constants/battle_frontier.h"
@@ -1061,6 +1062,5 @@ Common_EventScript_LegendaryFlewAway:: @ 8273776
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
-	.include "data/maps/Route101West/scripts.inc"
+	.include "data/maps/Oldale_Meadow/scripts.inc"
 
-	.include "data/maps/NewMap1/scripts.inc"
