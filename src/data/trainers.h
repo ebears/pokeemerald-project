@@ -1597,16 +1597,16 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_CINDY_1] =
     {
-        .partyFlags = F_TRAINER_PARTY_HELD_ITEM,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_LADY,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_LADY,
-        .trainerName = _("CINDY"),
+        .trainerName = _("Cindy"),
         .items = {ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Cindy1),
-        .party = {.ItemDefaultMoves = sParty_Cindy1},
+        .party = {.ItemCustomMoves = sParty_Cindy1},
     },
 
     [TRAINER_DAPHNE] =
@@ -4467,7 +4467,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_BILLY] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_YOUNGSTER,
@@ -4476,7 +4476,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Billy),
-        .party = {.NoItemDefaultMoves = sParty_Billy},
+        .party = {.ItemCustomMoves = sParty_Billy},
     },
 
     [TRAINER_JOSH] =
@@ -9745,16 +9745,16 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_DARIAN] =
     {
-        .partyFlags = 0,
+        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET,
         .trainerClass = TRAINER_CLASS_FISHERMAN,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_HIKER,
         .trainerPic = TRAINER_PIC_FISHERMAN,
-        .trainerName = _("DARIAN"),
+        .trainerName = _("Darian"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Darian),
-        .party = {.NoItemDefaultMoves = sParty_Darian},
+        .party = {.NoItemCustomMoves = sParty_Darian},
     },
 
     [TRAINER_HAILEY] =
