@@ -22,6 +22,11 @@
       "direction": "down",
       "offset": 0,
       "map": "MAP_LITTLEROOT_TOWN"
+    },
+    {
+      "direction": "left",
+      "offset": -6,
+      "map": "MAP_ROUTE101WEST"
     }
   ],
   "object_events": [
