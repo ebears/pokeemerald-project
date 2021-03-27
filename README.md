@@ -25,6 +25,7 @@
 - [Pokemon Centers Disregard Eggs During Healing Animations](https://github.com/pret/pokeemerald/wiki/Pokecenters-Disregard-Eggs)
 - [Reusable TMs](https://www.pokecommunity.com/showpost.php?p=9980343&postcount=7)
 - [TMs Only Able To Be Purchased Once](https://www.pokecommunity.com/showpost.php?p=10182590&postcount=117)
+- [Pokemon Can Forget Any Move](https://www.pokecommunity.com/showpost.php?p=10182839&postcount=119)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
