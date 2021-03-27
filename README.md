@@ -26,11 +26,13 @@
 - [Reusable TMs](https://www.pokecommunity.com/showpost.php?p=9980343&postcount=7)
 - [TMs Only Able To Be Purchased Once](https://www.pokecommunity.com/showpost.php?p=10182590&postcount=117)
 - [Pokemon Can Forget Any Move](https://www.pokecommunity.com/showpost.php?p=10182839&postcount=119)
+- [Decapitalization Patch](https://github.com/AsparagusEduardo/pokeemerald/tree/Decapitalization)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
 - [Surf Dismounting Visual Bug Fix](https://github.com/pret/pokeemerald/wiki/Surfing-Dismount-Ground-Effects)
 - [Emerald Broken RNG Fix](https://www.pokecommunity.com/showthread.php?p=10127870#post10127870)
+
 
 ## Bugs
 
