@@ -1458,7 +1458,7 @@ static const struct TrainerMonItemCustomMoves sParty_Cindy1[] = {
     },
     {
     .iv = 0,
-    .lvl = 12,
+    .lvl = 11,
     .species = SPECIES_PANPOUR,
     .heldItem = ITEM_EVIOLITE,
     .moves = {MOVE_NASTY_PLOT, MOVE_ICE_BEAM, MOVE_SCALD, MOVE_AQUA_RING}
@@ -4238,18 +4238,18 @@ static const struct TrainerMonItemCustomMoves sParty_Billy[] = {
     .lvl = 8,
     .species = SPECIES_ZIGZAGOON,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_NONE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    .moves = {MOVE_TACKLE, MOVE_TAIL_WHIP, MOVE_NONE, MOVE_NONE}
     },
     {
     .iv = 0,
     .lvl = 9,
     .species = SPECIES_SEEDOT,
     .heldItem = ITEM_NONE,
-    .moves = {MOVE_NONE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    .moves = {MOVE_BIDE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     },
     {
     .iv = 0,
-    .lvl = 11,
+    .lvl = 10,
     .species = SPECIES_CHEWTLE,
     .heldItem = ITEM_EVIOLITE,
     .moves = {MOVE_DRAGON_TAIL, MOVE_ICE_FANG, MOVE_SKITTER_SMACK, MOVE_PAYBACK}
@@ -6956,7 +6956,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_BrendanRoute119Torchic[]
 static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute103Mudkip[] = {
     {
     .iv = 0,
-    .lvl = 6,
+    .lvl = 5,
     .species = SPECIES_HONEDGE,
     }
 };
@@ -7000,7 +7000,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute119Mudkip[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute103Treecko[] = {
     {
     .iv = 0,
-    .lvl = 6,
+    .lvl = 5,
     .species = SPECIES_VANILLITE,
     }
 };
@@ -7044,7 +7044,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute119Treecko[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_MayRoute103Torchic[] = {
     {
     .iv = 0,
-    .lvl = 6,
+    .lvl = 5,
     .species = SPECIES_SANDILE,
     }
 };
@@ -9496,7 +9496,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Darian[] = {
     },
     {
     .iv = 0,
-    .lvl = 11,
+    .lvl = 10,
     .species = SPECIES_KRABBY,
     .moves = {MOVE_KNOCK_OFF, MOVE_FURY_CUTTER, MOVE_CRABHAMMER, MOVE_AGILITY}
     }

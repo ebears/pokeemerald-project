@@ -27,6 +27,7 @@
 - [TMs Only Able To Be Purchased Once](https://www.pokecommunity.com/showpost.php?p=10182590&postcount=117)
 - [Pokemon Can Forget Any Move](https://www.pokecommunity.com/showpost.php?p=10182839&postcount=119)
 - [Decapitalization Patch](https://github.com/AsparagusEduardo/pokeemerald/tree/Decapitalization)
+- [Surfboards](https://www.pokecommunity.com/showpost.php?p=10201173&postcount=140)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
