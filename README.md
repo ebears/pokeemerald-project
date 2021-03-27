@@ -23,6 +23,7 @@
 - [Much Faster Nurse Joy](https://www.pokecommunity.com/showpost.php?p=10213415&postcount=164)
 - [Changed Default Options to my Preferences (Text Speed: Fast, Set Mode, Stereo Audio)](https://www.pokecommunity.com/showpost.php?p=9967853&postcount=5)
 - [Pokemon Centers Disregard Eggs During Healing Animations](https://github.com/pret/pokeemerald/wiki/Pokecenters-Disregard-Eggs)
+- [Reusable TMs](https://www.pokecommunity.com/showpost.php?p=9980343&postcount=7)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
