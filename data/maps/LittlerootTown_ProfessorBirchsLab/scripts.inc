@@ -973,7 +973,6 @@ LittlerootTown_ProfessorBirchsLab_Text_TakeYourTimeAllInvaluable: @ 81FB959
 	.string "you decide.\p"
 	.string "They're all invaluable Pokémon.$"
 
-@ Unused
 LittlerootTown_ProfessorBirchsLab_Text_PickedFinePokemon: @ 81FB9A8
 	.string "Prof. Birch: I see!\n"
 	.string "You picked a fine Pokémon!$"
