@@ -4214,21 +4214,21 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Shelby5[] = {
 static const struct TrainerMonNoItemCustomMoves sParty_Calvin1[] = {
     {
     .iv = 0,
-    .lvl = 5,
-    .species = SPECIES_ZIGZAGOON,
-    .moves = {MOVE_NONE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    .lvl = 6,
+    .species = SPECIES_ZIGZAGOON_GALARIAN,
+    .moves = {MOVE_HEADBUTT, MOVE_LASH_OUT, MOVE_LICK, MOVE_PIN_MISSILE}
     },
     {
     .iv = 0,
     .lvl = 6,
-    .species = SPECIES_ZIGZAGOON_GALARIAN,
-    .moves = {MOVE_NONE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    .species = SPECIES_POOCHYENA,
+    .moves = {MOVE_BITE, MOVE_HOWL, MOVE_FIRE_FANG, MOVE_SUCKER_PUNCH}
     },
     {
-    .iv = 0,
+    .iv = 155,
     .lvl = 7,
-    .species = SPECIES_POOCHYENA,
-    .moves = {MOVE_BITE, MOVE_HOWL, MOVE_FIRE_FANG, MOVE_TACKLE}
+    .species = SPECIES_ZIGZAGOON,
+    .moves = {MOVE_BELLY_DRUM, MOVE_EXTREME_SPEED, MOVE_SEED_BOMB, MOVE_PROTECT}
     }
 };
 
@@ -4422,16 +4422,16 @@ static const struct TrainerMonNoItemCustomMoves sParty_Allen[] = {
     .iv = 0,
     .lvl = 6,
     .species = SPECIES_PIDGEY,
-    .moves = {MOVE_NONE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    .moves = {MOVE_WORK_UP, MOVE_AERIAL_ACE, MOVE_REST, MOVE_SNORE}
     },
     {
-    .iv = 0,
+    .iv = 100,
     .lvl = 8,
     .species = SPECIES_TAILLOW,
-    .moves = {MOVE_QUICK_ATTACK, MOVE_PROTECT, MOVE_SWIFT, MOVE_WING_ATTACK}
+    .moves = {MOVE_QUICK_ATTACK, MOVE_ROOST, MOVE_MIRROR_MOVE, MOVE_WING_ATTACK}
     },
     {
-    .iv = 0,
+    .iv = 100,
     .lvl = 8,
     .species = SPECIES_FARFETCHD,
     .moves = {MOVE_ATTRACT, MOVE_AGILITY, MOVE_BRUTAL_SWING, MOVE_PLUCK}
@@ -8033,13 +8033,13 @@ static const struct TrainerMonNoItemDefaultMoves sParty_MaxieMtChimney[] = {
 
 static const struct TrainerMonNoItemCustomMoves sParty_Tiana[] = {
     {
-    .iv = 0,
+    .iv = 127,
     .lvl = 9,
     .species = SPECIES_RALTS,
     .moves = {MOVE_CONFUSION, MOVE_LIGHT_SCREEN, MOVE_TRICK_ROOM, MOVE_TORMENT}
     },
     {
-    .iv = 0,
+    .iv = 127,
     .lvl = 9,
     .species = SPECIES_HATENNA,
     .moves = {MOVE_STORED_POWER, MOVE_DRAINING_KISS, MOVE_CALM_MIND, MOVE_AROMATHERAPY}
@@ -8203,33 +8203,37 @@ static const struct TrainerMonNoItemCustomMoves sParty_Rick[] = {
     .moves = {MOVE_NONE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     },
     {
-    .iv = 0,
-    .lvl = 9,
+    .iv = 127,
+    .lvl = 10,
     .species = SPECIES_BEEDRILL,
-    .moves = {MOVE_PURSUIT, MOVE_TOXIC_SPIKES, MOVE_ELECTROWEB, MOVE_FELL_STINGER}
+    .moves = {MOVE_PURSUIT, MOVE_TOXIC_SPIKES, MOVE_U_TURN, MOVE_FELL_STINGER}
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Lyle[] = {
+static const struct TrainerMonNoItemCustomMoves sParty_Lyle[] = {
     {
     .iv = 0,
-    .lvl = 3,
+    .lvl = 7,
     .species = SPECIES_WURMPLE,
+    .moves = {MOVE_NONE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     },
     {
     .iv = 0,
-    .lvl = 3,
-    .species = SPECIES_WURMPLE,
+    .lvl = 7,
+    .species = SPECIES_CATERPIE,
+    .moves = {MOVE_NONE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     },
     {
     .iv = 0,
-    .lvl = 3,
-    .species = SPECIES_WURMPLE,
+    .lvl = 7,
+    .species = SPECIES_WEEDLE,
+    .moves = {MOVE_NONE, MOVE_NONE, MOVE_NONE, MOVE_NONE}
     },
     {
-    .iv = 0,
-    .lvl = 3,
-    .species = SPECIES_WURMPLE,
+    .iv = 127,
+    .lvl = 11,
+    .species = SPECIES_KARRABLAST,
+    .moves = {MOVE_BUG_BITE, MOVE_POISON_JAB, MOVE_PROTECT, MOVE_SWAGGER}
     }
 };
 
