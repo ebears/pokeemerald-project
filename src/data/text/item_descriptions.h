@@ -3008,3 +3008,10 @@ static const u8 sUltranecroziumZDesc[] = _(
     "A crystal to turn\n"
     "fused Necrozma\n"
     "into a new form.");
+
+// Surfboard
+static const u8 sSurfboardDesc[] = _(
+	"This flat board\n"
+    "is shaped for\n"
+    "riding waves.");
+
