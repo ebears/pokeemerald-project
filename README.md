@@ -37,7 +37,7 @@
 
 ## Bugs
 
-- Stat moves (Growl, Tail Whip, etc.) don't cause any sort of visual overtop the Pokémon. Sound still plays and stats should be affected nonetheless.
+- ~~Stat moves (Growl, Tail Whip, etc.) don't cause any sort of visual overtop the Pokémon. Sound still plays and stats should be affected nonetheless.~~ Use the development build of mGBA.
 
 ## Wikis, Guides and Resources
 
