@@ -28,6 +28,7 @@
 - [Pokemon Can Forget Any Move](https://www.pokecommunity.com/showpost.php?p=10182839&postcount=119)
 - [Decapitalization Patch](https://github.com/AsparagusEduardo/pokeemerald/tree/Decapitalization)
 - [Surfboards](https://www.pokecommunity.com/showpost.php?p=10201173&postcount=140)
+- [Options Menu Plus](https://github.com/TheXaman/pokeemerald/tree/tx_optionsPlus)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
@@ -53,7 +54,7 @@ Poryscript Playground: https://www.huderlem.com/poryscript-playground/
 
 pokeemerald tutorials: [Building on Windows](https://www.pokecommunity.com/showthread.php?t=432351), [All in one tool](https://www.pokecommunity.com/showthread.php?p=10307292), [Building on pokeemerald](https://www.pokecommunity.com/showthread.php?t=432321)
 
-4chan /vp/ thread: https://boards.4channel.org/vp/thread/46657305
+4chan /vp/ thread: https://boards.4channel.org/vp/thread/46714301
 
 Emerald Enhanced (A Romhack made using the same tools): https://www.pokecommunity.com/showthread.php?t=416925
 
