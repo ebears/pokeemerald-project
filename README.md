@@ -50,8 +50,6 @@ pokeemerald Wiki: https://github.com/pret/pokeemerald/wiki
 
 Porymap Wiki: https://huderlem.github.io/porymap/index.html
 
-Poryscript Playground: https://www.huderlem.com/poryscript-playground/
-
 pokeemerald tutorials: [Building on Windows](https://www.pokecommunity.com/showthread.php?t=432351), [All in one tool](https://www.pokecommunity.com/showthread.php?p=10307292), [Building on pokeemerald](https://www.pokecommunity.com/showthread.php?t=432321)
 
 4chan /vp/ thread: https://boards.4channel.org/vp/thread/46714301
