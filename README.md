@@ -28,6 +28,7 @@
 - [Pokemon Can Forget Any Move](https://www.pokecommunity.com/showpost.php?p=10182839&postcount=119)
 - [Decapitalization Patch](https://github.com/AsparagusEduardo/pokeemerald/tree/Decapitalization)
 - [Surfboards](https://www.pokecommunity.com/showpost.php?p=10201173&postcount=140)
+- [Options Menu Plus](https://github.com/TheXaman/pokeemerald/tree/tx_optionsPlus)
 
 ### Fixes
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
