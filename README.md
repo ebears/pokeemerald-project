@@ -34,6 +34,7 @@
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
 - [Surf Dismounting Visual Bug Fix](https://github.com/pret/pokeemerald/wiki/Surfing-Dismount-Ground-Effects)
 - [Emerald Broken RNG Fix](https://www.pokecommunity.com/showthread.php?p=10127870#post10127870)
+- [Implemented Missing Text Function: RESET_SIZE](https://github.com/pret/pokeemerald/wiki/Implement-Missing-Text-Function-RESET_SIZE)
 
 
 ## Bugs
