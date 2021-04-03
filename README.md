@@ -1,5 +1,6 @@
 # Emerald
-## Features
+## Features  
+The [debug menu](https://github.com/pret/pokeemerald/wiki/Add-a-debug-menu) can be accessed by pressing B + Select.
 
 ### General
 - [Battle Engine Upgrade](https://www.pokecommunity.com/showthread.php?t=417820)
@@ -34,6 +35,7 @@
 - [More Efficient CPU cycles](https://github.com/pret/pokeemerald/wiki/Improving-the-WaitForVBlank-function)
 - [Surf Dismounting Visual Bug Fix](https://github.com/pret/pokeemerald/wiki/Surfing-Dismount-Ground-Effects)
 - [Emerald Broken RNG Fix](https://www.pokecommunity.com/showthread.php?p=10127870#post10127870)
+- [Implemented Missing Text Function: RESET_SIZE](https://github.com/pret/pokeemerald/wiki/Implement-Missing-Text-Function-RESET_SIZE)
 
 
 ## Bugs
@@ -49,8 +51,6 @@ Decomp Help: https://www.pokecommunity.com/forumdisplay.php?fn=decomp
 pokeemerald Wiki: https://github.com/pret/pokeemerald/wiki
 
 Porymap Wiki: https://huderlem.github.io/porymap/index.html
-
-Poryscript Playground: https://www.huderlem.com/poryscript-playground/
 
 pokeemerald tutorials: [Building on Windows](https://www.pokecommunity.com/showthread.php?t=432351), [All in one tool](https://www.pokecommunity.com/showthread.php?p=10307292), [Building on pokeemerald](https://www.pokecommunity.com/showthread.php?t=432321)
 

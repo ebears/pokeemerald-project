@@ -4228,7 +4228,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_Calvin1[] = {
     .iv = 155,
     .lvl = 7,
     .species = SPECIES_ZIGZAGOON,
-    .moves = {MOVE_BELLY_DRUM, MOVE_EXTREME_SPEED, MOVE_SEED_BOMB, MOVE_PROTECT}
+    .moves = {MOVE_BELLY_DRUM, MOVE_EXTREME_SPEED, MOVE_SEED_BOMB, MOVE_PIN_MISSILE}
     }
 };
 
@@ -8204,9 +8204,9 @@ static const struct TrainerMonNoItemCustomMoves sParty_Rick[] = {
     },
     {
     .iv = 127,
-    .lvl = 10,
-    .species = SPECIES_BEEDRILL,
-    .moves = {MOVE_PURSUIT, MOVE_TOXIC_SPIKES, MOVE_U_TURN, MOVE_FELL_STINGER}
+    .lvl = 9,
+    .species = SPECIES_SPEWPA,
+    .moves = {MOVE_SPIKES, MOVE_TAUNT, MOVE_AQUA_JET, MOVE_SUBSTITUTE}
     }
 };
 

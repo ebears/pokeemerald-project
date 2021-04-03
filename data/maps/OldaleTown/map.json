@@ -25,13 +25,13 @@
     },
     {
       "direction": "left",
-      "offset": 0,
-      "map": "MAP_ROUTE102"
+      "offset": 14,
+      "map": "MAP_OLDALE_MEADOW"
     },
     {
       "direction": "left",
-      "offset": 14,
-      "map": "MAP_OLDALE_MEADOW"
+      "offset": 0,
+      "map": "MAP_ROUTE102"
     }
   ],
   "object_events": [

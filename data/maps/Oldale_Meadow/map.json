@@ -27,6 +27,11 @@
       "direction": "right",
       "offset": -14,
       "map": "MAP_OLDALE_TOWN"
+    },
+    {
+      "direction": "up",
+      "offset": -28,
+      "map": "MAP_ROUTE102"
     }
   ],
   "object_events": [
