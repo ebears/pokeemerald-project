@@ -1,6 +1,6 @@
 # Emerald
 ## Features  
-The [debug menu](https://github.com/pret/pokeemerald/wiki/Add-a-debug-menu) can be accessed by pressing B + Select.
+The [debug menu](https://github.com/pret/pokeemerald/wiki/Add-a-debug-menu) can be accessed by pressing <kbd>B</kbd> + <kbd>Select</kbd>.
 
 ### General
 - [Battle Engine Upgrade](https://www.pokecommunity.com/showthread.php?t=417820)
