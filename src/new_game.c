@@ -51,7 +51,7 @@ extern const u8 EventScript_ResetAllMapFlags[];
 // this file's functions
 static void ClearFrontierRecord(void);
 static void WarpToTruck(void);
-static void ResetMiniGamesRecords(void);
+static void ResetMiniGamesResults(void);
 
 // EWRAM vars
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
@@ -87,7 +87,7 @@ void CopyTrainerId(u8 *dst, u8 *src)
 
 static void InitPlayerTrainerId(void)
 {
-    u32 trainerId = (Random() << 16) | GetGeneratedTrainerIdLower();
+    u32 trainerId = (Random() << 0x10) | GetGeneratedTrainerIdLower();
     SetTrainerId(trainerId, gSaveBlock2Ptr->playerTrainerId);
 }
 
@@ -143,7 +143,7 @@ void Sav2_ClearSetDefault(void)
 
 void ResetMenuAndMonGlobals(void)
 {
-    gDifferentSaveFile = FALSE;
+    gDifferentSaveFile = 0;
     ResetPokedexScrollPositions();
     ZeroPlayerPartyMons();
     ZeroEnemyPartyMons();
@@ -156,7 +156,7 @@ void NewGameInitData(void)
     if (gSaveFileStatus == SAVE_STATUS_EMPTY || gSaveFileStatus == SAVE_STATUS_CORRUPT)
         RtcReset();
 
-    gDifferentSaveFile = TRUE;
+    gDifferentSaveFile = 1;
     gSaveBlock2Ptr->encryptionKey = 0;
     ZeroPlayerPartyMons();
     ZeroEnemyPartyMons();
@@ -199,7 +199,7 @@ void NewGameInitData(void)
     ResetLotteryCorner();
     WarpToTruck();
     ScriptContext2_RunNewScript(EventScript_ResetAllMapFlags);
-    ResetMiniGamesRecords();
+    ResetMiniGamesResults();
     InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();
     ResetAllApprenticeData();
@@ -216,10 +216,10 @@ void NewGameInitData(void)
     gSaveBlock1Ptr->registeredItemR = 0;
 }
 
-static void ResetMiniGamesRecords(void)
+static void ResetMiniGamesResults(void)
 {
     CpuFill16(0, &gSaveBlock2Ptr->berryCrush, sizeof(struct BerryCrush));
     SetBerryPowder(&gSaveBlock2Ptr->berryCrush.berryPowderAmount, 0);
-    ResetPokemonJumpRecords();
+    ResetPokeJumpResults();
     CpuFill16(0, &gSaveBlock2Ptr->berryPick, sizeof(struct BerryPickingResults));
 }

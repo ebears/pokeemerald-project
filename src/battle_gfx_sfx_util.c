@@ -40,7 +40,7 @@ extern const struct SpriteTemplate gSpriteTemplate_EnemyShadow;
 // this file's functions
 static u8 GetBattlePalaceMoveGroup(u16 move);
 static u16 GetBattlePalaceTarget(void);
-static void SpriteCB_TrainerSlideVertical(struct Sprite *sprite);
+static void sub_805D7EC(struct Sprite *sprite);
 static bool8 ShouldAnimBeDoneRegardlessOfSubsitute(u8 animId);
 static void Task_ClearBitWhenBattleTableAnimDone(u8 taskId);
 static void Task_ClearBitWhenSpecialAnimDone(u8 taskId);
@@ -337,8 +337,7 @@ static u16 GetBattlePalaceTarget(void)
     return (gActiveBattler ^ BIT_SIDE) << 8;
 }
 
-// Wait for the pokemon to finish appearing out from the pokeball on send out
-void SpriteCB_WaitForBattlerBallReleaseAnim(struct Sprite *sprite)
+void sub_805D714(struct Sprite *sprite)
 {
     u8 spriteId = sprite->data[1];
 
@@ -358,9 +357,9 @@ void SpriteCB_WaitForBattlerBallReleaseAnim(struct Sprite *sprite)
     }
 }
 
-static void UnusedDoBattleSpriteAffineAnim(struct Sprite *sprite, bool8 arg1)
+void sub_805D770(struct Sprite *sprite, bool8 arg1)
 {
-    sprite->animPaused = TRUE;
+    sprite->animPaused = 1;
     sprite->callback = SpriteCallbackDummy;
 
     if (!arg1)
@@ -371,32 +370,27 @@ static void UnusedDoBattleSpriteAffineAnim(struct Sprite *sprite, bool8 arg1)
     AnimateSprite(sprite);
 }
 
-#define sSpeedX data[0]
-
-void SpriteCB_TrainerSlideIn(struct Sprite *sprite)
+void sub_805D7AC(struct Sprite *sprite)
 {
     if (!(gIntroSlideFlags & 1))
     {
-        sprite->pos2.x += sprite->sSpeedX;
+        sprite->pos2.x += sprite->data[0];
         if (sprite->pos2.x == 0)
         {
             if (sprite->pos2.y != 0)
-                sprite->callback = SpriteCB_TrainerSlideVertical;
+                sprite->callback = sub_805D7EC;
             else
                 sprite->callback = SpriteCallbackDummy;
         }
     }
 }
 
-// Slide up to 0 if necessary (used by multi battle intro)
-static void SpriteCB_TrainerSlideVertical(struct Sprite *sprite)
+static void sub_805D7EC(struct Sprite *sprite)
 {
     sprite->pos2.y -= 2;
     if (sprite->pos2.y == 0)
         sprite->callback = SpriteCallbackDummy;
 }
-
-#undef sSpeedX
 
 void InitAndLaunchChosenStatusAnimation(bool8 isStatus2, u32 status)
 {
@@ -538,15 +532,14 @@ bool8 IsMoveWithoutAnimation(u16 moveId, u8 animationTurn)
         return FALSE;
 }
 
-// Check if SE has finished or 30 calls, whichever comes first
-bool8 IsBattleSEPlaying(u8 battlerId)
+bool8 mplay_80342A4(u8 battlerId)
 {
     u8 zero = 0;
 
     if (IsSEPlaying())
     {
-        gBattleSpritesDataPtr->healthBoxesData[battlerId].soundTimer++;
-        if (gBattleSpritesDataPtr->healthBoxesData[gActiveBattler].soundTimer < 30)
+        gBattleSpritesDataPtr->healthBoxesData[battlerId].field_8++;
+        if (gBattleSpritesDataPtr->healthBoxesData[gActiveBattler].field_8 < 30)
             return TRUE;
 
         m4aMPlayStop(&gMPlayInfo_SE1);
@@ -554,11 +547,10 @@ bool8 IsBattleSEPlaying(u8 battlerId)
     }
     if (zero == 0)
     {
-        gBattleSpritesDataPtr->healthBoxesData[battlerId].soundTimer = 0;
+        gBattleSpritesDataPtr->healthBoxesData[battlerId].field_8 = 0;
         return FALSE;
     }
 
-    // Never reached
     return TRUE;
 }
 
@@ -633,7 +625,7 @@ void BattleLoadPlayerMonSpriteGfx(struct Pokemon *mon, u8 battlerId)
     BattleLoadMonSpriteGfx(mon, battlerId, FALSE);
 }
 
-void BattleGfxSfxDummy2(u16 species)
+void nullsub_24(u16 species)
 {
 }
 
@@ -656,7 +648,7 @@ void DecompressTrainerBackPic(u16 backPicId, u8 battlerId)
                           0x100 + 16 * battlerId, 0x20);
 }
 
-void BattleGfxSfxDummy3(u8 gender)
+void nullsub_25(u8 arg0)
 {
 }
 
@@ -920,8 +912,8 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool8 notTransform
     else
     {
         src = gMonSpritesGfxPtr->sprites.ptr[position];
-        dst = (void *)(OBJ_VRAM0 + gSprites[gBattlerSpriteIds[battlerAtk]].oam.tileNum * 32);
-        DmaCopy32(3, src, dst, MON_PIC_SIZE);
+        dst = (void *)(VRAM + 0x10000 + gSprites[gBattlerSpriteIds[battlerAtk]].oam.tileNum * 32);
+        DmaCopy32(3, src, dst, 0x800);
         paletteOffset = 0x100 + battlerAtk * 16;
         lzPaletteData = GetMonSpritePalFromSpeciesAndPersonality(targetSpecies, otId, personalityValue);
         LZDecompressWram(lzPaletteData, gDecompressionBuffer);
@@ -971,7 +963,7 @@ void BattleLoadSubstituteOrMonSpriteGfx(u8 battlerId, bool8 loadMonSprite)
 
         for (i = 1; i < 4; i++)
         {
-            Dma3CopyLarge32_(gMonSpritesGfxPtr->sprites.ptr[position], &gMonSpritesGfxPtr->sprites.byte[position][MON_PIC_SIZE * i], MON_PIC_SIZE);
+            Dma3CopyLarge32_(gMonSpritesGfxPtr->sprites.ptr[position], &gMonSpritesGfxPtr->sprites.byte[position][0x800 * i], 0x800);
         }
 
         palOffset = (battlerId * 16) + 0x100;
@@ -1076,7 +1068,7 @@ void HandleBattleLowHpMusicChange(void)
     }
 }
 
-void SetBattlerSpriteAffineMode(u8 affineMode)
+void sub_805EB9C(u8 affineMode)
 {
     s32 i;
 
@@ -1212,12 +1204,12 @@ void AllocateMonSpritesGfx(void)
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
         gMonSpritesGfxPtr->sprites.ptr[i] = gMonSpritesGfxPtr->firstDecompressed + (i * 0x2000);
-        *(gMonSpritesGfxPtr->templates + i) = gBattlerSpriteTemplates[i];
+        *(gMonSpritesGfxPtr->templates + i) = gUnknown_08329D98[i];
 
         for (j = 0; j < 4; j++)
         {
-            gMonSpritesGfxPtr->field_74[i][j].data = gMonSpritesGfxPtr->sprites.ptr[i] + (j * MON_PIC_SIZE);
-            gMonSpritesGfxPtr->field_74[i][j].size = MON_PIC_SIZE;
+            gMonSpritesGfxPtr->field_74[i][j].data = gMonSpritesGfxPtr->sprites.ptr[i] + (j * 0x800);
+            gMonSpritesGfxPtr->field_74[i][j].size = 0x800;
         }
 
         gMonSpritesGfxPtr->templates[i].images = gMonSpritesGfxPtr->field_74[i];

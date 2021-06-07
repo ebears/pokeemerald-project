@@ -1,3 +1,5 @@
+
+// Includes
 #include "global.h"
 #include "bard_music.h"
 #include "constants/easy_chat.h"
@@ -8,9 +10,9 @@
 #include "data/bard_music/default_sound.h"
 #include "data/bard_music/length_table.h"
 
-static s16 CalcWordPitch(int arg0, int songPos)
+s16 CalcWordPitch(int arg0, int songPos)
 {
-    return sBardSoundPitchTables[arg0][songPos];
+    return gBardSoundPitchTables[arg0][songPos];
 }
 
 const struct BardSound *GetWordSounds(u16 word)
@@ -19,7 +21,7 @@ const struct BardSound *GetWordSounds(u16 word)
     u32 subword;
     const struct BardSound (*ptr)[6];
 
-    if (IsBardWordInvalid(word))
+    if (ECWord_CheckIfOutsideOfValidRange(word))
     {
         return gBardSound_InvalidWord;
     }
@@ -28,7 +30,7 @@ const struct BardSound *GetWordSounds(u16 word)
     switch (category)
     {
         case EC_GROUP_POKEMON:
-        case EC_GROUP_POKEMON_NATIONAL:
+        case EC_GROUP_POKEMON_2:
             ptr = gBardSounds_Pokemon;
             break;
         case EC_GROUP_MOVE_1:

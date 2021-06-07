@@ -1002,7 +1002,7 @@ static void DestroyBlendPalettesGraduallyTask(void)
     while (1)
     {
         taskId = FindTaskIdByFunc(Task_BlendPalettesGradually);
-        if (taskId == TASK_NONE)
+        if (taskId == 0xFF)
             break;
         DestroyTask(taskId);
     }

@@ -29,6 +29,7 @@
 #include "task.h"
 #include "text.h"
 #include "text_window.h"
+#include "constants/berry.h"
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
@@ -432,7 +433,7 @@ void OpenPokeblockCase(u8 caseId, void (*callback)(void))
     sPokeblockMenu = Alloc(sizeof(*sPokeblockMenu));
     sPokeblockMenu->caseId = caseId;
     sPokeblockMenu->callbackOnUse = NULL;
-    sPokeblockMenu->unkTaskId = TASK_NONE;
+    sPokeblockMenu->unkTaskId = 0xFF;
     sPokeblockMenu->isSwapping = FALSE;
     sSavedPokeblockData.callback = callback;
 
@@ -581,11 +582,11 @@ static bool8 InitPokeblockMenu(void)
         gMain.state++;
         break;
     case 17:
-        BlendPalettes(PALETTES_ALL, 0x10, 0);
+        BlendPalettes(-1, 0x10, 0);
         gMain.state++;
         break;
     case 18:
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK);
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_BLACK);
         gPaletteFade.bufferTransferDisabled = 0;
         gMain.state++;
         break;
@@ -760,8 +761,8 @@ static void sub_8135FCC(s32 pkblId)
         {
             if (GetPokeblockData(pokeblock, PBLOCK_SPICY + i) > 0)
             {
-                rectTilemapSrc[0] = (i << 12) + 0x17;
-                rectTilemapSrc[1] = (i << 12) + 0x18;
+                rectTilemapSrc[0] = (i << 0xC) + 0x17;
+                rectTilemapSrc[1] = (i << 0xC) + 0x18;
             }
             else
             {
@@ -898,7 +899,7 @@ static void sub_8136344(void)
 
 static void sub_81363BC(void)
 {
-    if (sPokeblockMenu->unkTaskId == TASK_NONE)
+    if (sPokeblockMenu->unkTaskId == 0xFF)
     {
         sPokeblockMenu->unkTaskId = AddScrollIndicatorArrowPairParameterized(SCROLL_ARROW_UP, 0xB0, 8, 0x98, sPokeblockMenu->itemsNo - sPokeblockMenu->maxShowed,
                                                                             0x456, 0x456, &sSavedPokeblockData.lastItemPage);
@@ -907,10 +908,10 @@ static void sub_81363BC(void)
 
 static void sub_8136418(void)
 {
-    if (sPokeblockMenu->unkTaskId != TASK_NONE)
+    if (sPokeblockMenu->unkTaskId != 0xFF)
     {
         RemoveScrollIndicatorArrowPair(sPokeblockMenu->unkTaskId);
-        sPokeblockMenu->unkTaskId = TASK_NONE;
+        sPokeblockMenu->unkTaskId = 0xFF;
     }
 }
 
@@ -948,7 +949,7 @@ static void sub_8136470(struct Sprite *sprite)
 
 static void FadePaletteAndSetTaskToClosePokeblockCase(u8 taskId)
 {
-    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
+    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_FreeDataAndExitPokeblockCase;
 }
 

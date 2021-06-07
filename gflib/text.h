@@ -361,18 +361,20 @@ typedef struct {
     bool8 forceMidTextSpeed:1;
 } TextFlags;
 
-struct TextGlyph
+struct Struct_03002F90
 {
-    u32 gfxBufferTop[16];
-    u32 gfxBufferBottom[16];
+    u32 unk0[8];
+    u32 unk20[8];
+    u32 unk40[8];
+    u32 unk60[8];
     u8 width;
     u8 height;
 };
 
 extern TextFlags gTextFlags;
 
-extern u8 gDisableTextPrinters;
-extern struct TextGlyph gCurGlyph;
+extern u8 gUnknown_03002F84;
+extern struct Struct_03002F90 gUnknown_03002F90;
 
 void SetFontsPointer(const struct FontInfo *fonts);
 void DeactivateAllTextPrinters(void);

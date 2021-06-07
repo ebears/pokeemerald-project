@@ -34,6 +34,7 @@
 #include "new_game.h"
 #include "save.h"
 #include "strings.h"
+#include "constants/berry.h"
 #include "constants/game_stat.h"
 #include "constants/items.h"
 #include "constants/rgb.h"
@@ -1097,7 +1098,7 @@ static void CB2_LoadBerryBlender(void)
         }
         break;
     case 2:
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK);
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_BLACK);
         UpdateBlenderCenter();
         sBerryBlender->mainState++;
         break;
@@ -1111,7 +1112,7 @@ static void CB2_LoadBerryBlender(void)
             sBerryBlender->mainState++;
         break;
     case 5:
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
         sBerryBlender->mainState++;
         break;
     case 6:
@@ -1326,7 +1327,7 @@ static void CB2_StartBlenderLink(void)
         sBerryBlender->mainState++;
         break;
     case 3:
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK);
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_BLACK);
         sBerryBlender->mainState++;
         break;
     case 4:
@@ -1664,7 +1665,7 @@ static void CB2_StartBlenderLocal(void)
         sBerryBlender->mainState++;
         break;
     case 3:
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK);
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_BLACK);
         sBerryBlender->mainState++;
         sBerryBlender->framesToWait = 0;
         break;
@@ -2895,7 +2896,7 @@ static void CB2_CheckPlayAgainLink(void)
     case 9:
         if (IsLinkTaskFinished())
         {
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
             sBerryBlender->gameEndState++;
         }
         break;

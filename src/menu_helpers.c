@@ -312,14 +312,14 @@ static bool8 sub_81221D0(void)
     if (!MenuHelpers_LinkSomething())
         return FALSE;
     else
-        return Overworld_LinkRecvQueueLengthMoreThan2();
+        return sub_8087598();
 }
 
 bool8 MenuHelpers_CallLinkSomething(void)
 {
     if (sub_81221D0() == TRUE)
         return TRUE;
-    else if (IsLinkRecvQueueLengthAtLeast3() != TRUE)
+    else if (sub_800B504() != TRUE)
         return FALSE;
     else
         return TRUE;

@@ -5132,7 +5132,7 @@ BattleScript_LocalBattleLostDoTrainer2WinText::
 BattleScript_LocalBattleLostEnd_::
 	end2
 
-BattleScript_FrontierLinkBattleLost::
+BattleScript_82DAA0B::
 	returnopponentmon1toball BS_ATTACKER
 	waitstate
 	returnopponentmon2toball BS_ATTACKER
@@ -5145,23 +5145,23 @@ BattleScript_FrontierLinkBattleLost::
 	trainerslidein BS_FAINTED
 	waitstate
 	printstring STRINGID_TRAINER2WINTEXT
-	jumpifbattletype BATTLE_TYPE_RECORDED, BattleScript_FrontierLinkBattleLostEnd
-	endlinkbattle
-BattleScript_FrontierLinkBattleLostEnd::
+	jumpifbattletype BATTLE_TYPE_RECORDED, BattleScript_82DAA31
+	atk57
+BattleScript_82DAA31::
 	waitmessage 0x40
 	end2
 
 BattleScript_LinkBattleWonOrLost::
-	jumpifbattletype BATTLE_TYPE_BATTLE_TOWER, BattleScript_TowerLinkBattleWon
+	jumpifbattletype BATTLE_TYPE_BATTLE_TOWER, BattleScript_82DAA5C
 	printstring STRINGID_BATTLEEND
 	waitmessage 0x40
 	jumpifbattletype BATTLE_TYPE_RECORDED, BattleScript_LinkBattleWonOrLostWaitEnd
-	endlinkbattle
+	atk57
 BattleScript_LinkBattleWonOrLostWaitEnd::
 	waitmessage 0x40
 	end2
 
-BattleScript_TowerLinkBattleWon::
+BattleScript_82DAA5C::
 	playtrainerdefeatbgm BS_ATTACKER
 	printstring STRINGID_BATTLEEND
 	waitmessage 0x40
@@ -5173,9 +5173,9 @@ BattleScript_TowerLinkBattleWon::
 	trainerslidein BS_FAINTED
 	waitstate
 	printstring STRINGID_TRAINER2LOSETEXT
-	jumpifbattletype BATTLE_TYPE_RECORDED, BattleScript_TowerLinkBattleWonEnd
-	endlinkbattle
-BattleScript_TowerLinkBattleWonEnd::
+	jumpifbattletype BATTLE_TYPE_RECORDED, BattleScript_82DAA83
+	atk57
+BattleScript_82DAA83::
 	waitmessage 0x40
 	end2
 
@@ -7857,7 +7857,7 @@ BattleScript_PrintPlayerForfeited::
 BattleScript_PrintPlayerForfeitedLinkBattle::
 	printstring STRINGID_FORFEITEDMATCH
 	waitmessage 0x40
-	endlinkbattle
+	atk57
 	waitmessage 0x40
 	end2
 
