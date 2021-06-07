@@ -152,7 +152,7 @@ void PadNameString(u8 *dest, u8 padChar)
     dest[length] = EOS;
 }
 
-void ConvertInternationalPlayerName(u8 *str)
+void sub_81DB52C(u8 *str)
 {
     if (StringLength(str) < PLAYER_NAME_LENGTH - 1)
         ConvertInternationalString(str, LANGUAGE_JAPANESE);
@@ -160,14 +160,14 @@ void ConvertInternationalPlayerName(u8 *str)
         StripExtCtrlCodes(str);
 }
 
-void ConvertInternationalPlayerNameStripChar(u8 *str, u8 removeChar)
+void sub_81DB554(u8 *str, u8 arg1)
 {
     u8 *buffer;
     if (StringLength(str) < PLAYER_NAME_LENGTH - 1)
     {
         ConvertInternationalString(str, LANGUAGE_JAPANESE);
     }
-    else if (removeChar == EXT_CTRL_CODE_BEGIN)
+    else if (arg1 == EXT_CTRL_CODE_BEGIN)
     {
         StripExtCtrlCodes(str);
     }
@@ -177,7 +177,7 @@ void ConvertInternationalPlayerNameStripChar(u8 *str, u8 removeChar)
         while (buffer[1] != EOS)
             buffer++;
 
-        while (buffer >= str && buffer[0] == removeChar)
+        while (buffer >= str && buffer[0] == arg1)
         {
             buffer[0] = EOS;
             buffer--;
@@ -214,7 +214,7 @@ int sub_81DB604(u8 *str)
     if (str[0] == EXT_CTRL_CODE_BEGIN && str[1] == EXT_CTRL_CODE_JPN)
         return LANGUAGE_JAPANESE;
     else
-        return GAME_LANGUAGE;
+        return LANGUAGE_ENGLISH;
 }
 
 void sub_81DB620(int windowId, int columnStart, int rowStart, int numFillTiles, int numRows)

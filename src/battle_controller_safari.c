@@ -44,7 +44,7 @@ static void SafariHandleMoveAnimation(void);
 static void SafariHandlePrintString(void);
 static void SafariHandlePrintSelectionString(void);
 static void SafariHandleChooseAction(void);
-static void SafariHandleYesNoBox(void);
+static void SafariHandleUnknownYesNoBox(void);
 static void SafariHandleChooseMove(void);
 static void SafariHandleChooseItem(void);
 static void SafariHandleChoosePokemon(void);
@@ -80,7 +80,7 @@ static void SafariHandleSpriteInvisibility(void);
 static void SafariHandleBattleAnimation(void);
 static void SafariHandleLinkStandbyMsg(void);
 static void SafariHandleResetActionMoveSelection(void);
-static void SafariHandleEndLinkBattle(void);
+static void SafariHandleCmd55(void);
 static void SafariHandleBattleDebug(void);
 static void SafariCmdEnd(void);
 
@@ -109,7 +109,7 @@ static void (*const sSafariBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
     [CONTROLLER_PRINTSTRING]              = SafariHandlePrintString,
     [CONTROLLER_PRINTSTRINGPLAYERONLY]    = SafariHandlePrintSelectionString,
     [CONTROLLER_CHOOSEACTION]             = SafariHandleChooseAction,
-    [CONTROLLER_YESNOBOX]                 = SafariHandleYesNoBox,
+    [CONTROLLER_UNKNOWNYESNOBOX]          = SafariHandleUnknownYesNoBox,
     [CONTROLLER_CHOOSEMOVE]               = SafariHandleChooseMove,
     [CONTROLLER_OPENBAG]                  = SafariHandleChooseItem,
     [CONTROLLER_CHOOSEPOKEMON]            = SafariHandleChoosePokemon,
@@ -145,7 +145,7 @@ static void (*const sSafariBufferCommands[CONTROLLER_CMDS_COUNT])(void) =
     [CONTROLLER_BATTLEANIMATION]          = SafariHandleBattleAnimation,
     [CONTROLLER_LINKSTANDBYMSG]           = SafariHandleLinkStandbyMsg,
     [CONTROLLER_RESETACTIONMOVESELECTION] = SafariHandleResetActionMoveSelection,
-    [CONTROLLER_ENDLINKBATTLE]            = SafariHandleEndLinkBattle,
+    [CONTROLLER_55]                       = SafariHandleCmd55,
     [CONTROLLER_DEBUGMENU]                = SafariHandleBattleDebug,
     [CONTROLLER_TERMINATOR_NOP]           = SafariCmdEnd
 };
@@ -253,7 +253,7 @@ static void CompleteOnHealthboxSpriteCallbackDummy(void)
         SafariBufferExecCompleted();
 }
 
-static void SafariSetBattleEndCallbacks(void)
+static void sub_81595E4(void)
 {
     if (!gPaletteFade.active)
     {
@@ -351,8 +351,6 @@ static void SafariHandleReturnMonToBall(void)
     SafariBufferExecCompleted();
 }
 
-#define sSpeedX data[0]
-
 static void SafariHandleDrawTrainerPic(void)
 {
     DecompressTrainerBackPic(gSaveBlock2Ptr->playerGender, gActiveBattler);
@@ -363,13 +361,11 @@ static void SafariHandleDrawTrainerPic(void)
       (8 - gTrainerBackPicCoords[gSaveBlock2Ptr->playerGender].size) * 4 + 80,
       30);
     gSprites[gBattlerSpriteIds[gActiveBattler]].oam.paletteNum = gActiveBattler;
-    gSprites[gBattlerSpriteIds[gActiveBattler]].pos2.x = DISPLAY_WIDTH;
-    gSprites[gBattlerSpriteIds[gActiveBattler]].sSpeedX = -2;
-    gSprites[gBattlerSpriteIds[gActiveBattler]].callback = SpriteCB_TrainerSlideIn;
+    gSprites[gBattlerSpriteIds[gActiveBattler]].pos2.x = 240;
+    gSprites[gBattlerSpriteIds[gActiveBattler]].data[0] = -2;
+    gSprites[gBattlerSpriteIds[gActiveBattler]].callback = sub_805D7AC;
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnBattlerSpriteCallbackDummy;
 }
-
-#undef sSpeedX
 
 static void SafariHandleTrainerSlide(void)
 {
@@ -464,7 +460,7 @@ static void SafariHandleChooseAction(void)
     BattlePutTextOnWindow(gDisplayedStringBattle, 1);
 }
 
-static void SafariHandleYesNoBox(void)
+static void SafariHandleUnknownYesNoBox(void)
 {
     SafariBufferExecCompleted();
 }
@@ -476,7 +472,7 @@ static void SafariHandleChooseMove(void)
 
 static void SafariHandleChooseItem(void)
 {
-    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
+    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gBattlerControllerFuncs[gActiveBattler] = SafariOpenPokeblockCase;
     gBattlerInMenuId = gActiveBattler;
 }
@@ -633,7 +629,7 @@ static void SafariHandleIntroSlide(void)
 static void SafariHandleIntroTrainerBallThrow(void)
 {
     UpdateHealthboxAttribute(gHealthboxSpriteIds[gActiveBattler], &gPlayerParty[gBattlerPartyIndexes[gActiveBattler]], HEALTHBOX_SAFARI_ALL_TEXT);
-    StartHealthboxSlideIn(gActiveBattler);
+    sub_8076918(gActiveBattler);
     SetHealthboxSpriteVisible(gHealthboxSpriteIds[gActiveBattler]);
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnHealthboxSpriteCallbackDummy;
 }
@@ -679,14 +675,14 @@ static void SafariHandleResetActionMoveSelection(void)
     SafariBufferExecCompleted();
 }
 
-static void SafariHandleEndLinkBattle(void)
+static void SafariHandleCmd55(void)
 {
     gBattleOutcome = gBattleResources->bufferA[gActiveBattler][1];
     FadeOutMapMusic(5);
     BeginFastPaletteFade(3);
     SafariBufferExecCompleted();
     if ((gBattleTypeFlags & BATTLE_TYPE_LINK) && !(gBattleTypeFlags & BATTLE_TYPE_IS_MASTER))
-        gBattlerControllerFuncs[gActiveBattler] = SafariSetBattleEndCallbacks;
+        gBattlerControllerFuncs[gActiveBattler] = sub_81595E4;
 }
 
 static void SafariHandleBattleDebug(void)

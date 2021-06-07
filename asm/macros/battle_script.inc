@@ -510,7 +510,7 @@
 	.byte \battler
 	.endm
 
-	.macro endlinkbattle
+	.macro atk57
 	.byte 0x57
 	.endm
 

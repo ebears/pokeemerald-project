@@ -51,9 +51,7 @@ static u16 QuantizePixel_GrayscaleSmall(u16*);
 static u16 QuantizePixel_Grayscale(u16*);
 static u16 QuantizePixel_PrimaryColors(u16*);
 
-#define MAX_DIMENSION 64
-
-#include "data/pointillism_points.h"
+extern const u8 gPointillismPoints[][3];
 
 void ApplyImageProcessingEffects(struct ImageProcessingContext *context)
 {
@@ -171,7 +169,7 @@ static void ApplyImageEffect_RedChannelGrayscaleHighlight(u8 highlight)
 static void ApplyImageEffect_Pointillism(void)
 {
     u32 i;
-    for (i = 0; i < ARRAY_COUNT(sPointillismPoints); i++)
+    for (i = 0; i < 3200; i++)
         AddPointillismPoints(i);
 }
 
@@ -309,9 +307,9 @@ static void ApplyImageEffect_Shimmer(void)
 
     // First, invert all of the colors.
     pixel = gCanvasPixels;
-    for (i = 0; i < MAX_DIMENSION; i++)
+    for (i = 0; i < 64; i++)
     {
-        for (j = 0; j < MAX_DIMENSION; j++, pixel++)
+        for (j = 0; j < 64; j++, pixel++)
         {
             if (!IS_ALPHA(*pixel))
                 *pixel = QuantizePixel_Invert(pixel);
@@ -319,16 +317,16 @@ static void ApplyImageEffect_Shimmer(void)
     }
 
     // Blur the pixels twice.
-    for (j = 0; j < MAX_DIMENSION; j++)
+    for (j = 0; j < 64; j++)
     {
         pixel = &gCanvasPixels[j];
         prevPixel = *pixel;
         *pixel = RGB_ALPHA;
-        for (i = 1, pixel += MAX_DIMENSION; i < MAX_DIMENSION - 1; i++, pixel += MAX_DIMENSION)
+        for (i = 1, pixel += 64; i < 63; i++, pixel += 64)
         {
             if (!IS_ALPHA(*pixel))
             {
-                *pixel = QuantizePixel_BlurHard(&prevPixel, pixel, pixel + MAX_DIMENSION);
+                *pixel = QuantizePixel_BlurHard(&prevPixel, pixel, pixel + 64);
                 prevPixel = *pixel;
             }
         }
@@ -337,11 +335,11 @@ static void ApplyImageEffect_Shimmer(void)
         pixel = &gCanvasPixels[j];
         prevPixel = *pixel;
         *pixel = RGB_ALPHA;
-        for (i = 1, pixel += MAX_DIMENSION; i < MAX_DIMENSION - 1; i++, pixel += MAX_DIMENSION)
+        for (i = 1, pixel += 64; i < 63; i++, pixel += 64)
         {
             if (!IS_ALPHA(*pixel))
             {
-                *pixel = QuantizePixel_BlurHard(&prevPixel, pixel, pixel + MAX_DIMENSION);
+                *pixel = QuantizePixel_BlurHard(&prevPixel, pixel, pixel + 64);
                 prevPixel = *pixel;
             }
         }
@@ -353,9 +351,9 @@ static void ApplyImageEffect_Shimmer(void)
     // The above blur causes the outline areas to darken, which makes
     // this inversion give the effect of light outlines.
     pixel = gCanvasPixels;
-    for (i = 0; i < MAX_DIMENSION; i++)
+    for (i = 0; i < 64; i++)
     {
-        for (j = 0; j < MAX_DIMENSION; j++, pixel++)
+        for (j = 0; j < 64; j++, pixel++)
         {
             if (!IS_ALPHA(*pixel))
                 *pixel = QuantizePixel_Invert(pixel);
@@ -410,19 +408,19 @@ struct PointillismPoint
     u16 delta;
 };
 
-static void AddPointillismPoints(u16 point)
+static void AddPointillismPoints(u16 arg0)
 {
     u8 i;
     bool8 offsetDownLeft;
     u8 colorType;
     struct PointillismPoint points[6];
 
-    points[0].column = sPointillismPoints[point][0];
-    points[0].row = sPointillismPoints[point][1];
-    points[0].delta = GET_POINT_DELTA(sPointillismPoints[point][2]);
+    points[0].column = gPointillismPoints[arg0][0];
+    points[0].row = gPointillismPoints[arg0][1];
+    points[0].delta = (gPointillismPoints[arg0][2] >> 3) & 7;
 
-    colorType = GET_POINT_COLOR_TYPE(sPointillismPoints[point][2]);
-    offsetDownLeft = GET_POINT_OFFSET_DL(sPointillismPoints[point][2]);
+    colorType = (gPointillismPoints[arg0][2] >> 1) & 3;
+    offsetDownLeft = gPointillismPoints[arg0][2] & 1;
     for (i = 1; i < points[0].delta; i++)
     {
         if (!offsetDownLeft)
@@ -436,7 +434,7 @@ static void AddPointillismPoints(u16 point)
             points[i].row = points[0].row - 1;
         }
 
-        if (points[i].column >= MAX_DIMENSION || points[i].row >= MAX_DIMENSION)
+        if (points[i].column > 63 || points[i].row > 63)
         {
             points[0].delta = i - 1;
             break;
@@ -447,7 +445,7 @@ static void AddPointillismPoints(u16 point)
 
     for (i = 0; i < points[0].delta; i++)
     {
-        u16 *pixel = &gCanvasPixels[points[i].row * MAX_DIMENSION] + points[i].column;
+        u16 *pixel = &gCanvasPixels[points[i].row * 64] + points[i].column;
 
         if (!IS_ALPHA(*pixel))
         {
@@ -459,7 +457,7 @@ static void AddPointillismPoints(u16 point)
             {
             case 0:
             case 1:
-                switch (GET_POINT_DELTA(sPointillismPoints[point][2]) % 3)
+                switch (((gPointillismPoints[arg0][2] >> 3) & 7) % 3)
                 {
                 case 0:
                     if (red >= points[i].delta)
@@ -804,8 +802,8 @@ void ConvertImageProcessingToGBA(struct ImageProcessingContext *context)
                     dest = dest_ + ((i * width + j) << 4) + (k << 1);
                     src = src_ + ((((i << 3) + k) << 3) * width) + (j << 3);
 
-                    dest[0] = src[0] | (src[1] << 4) | (src[2] << 8) | (src[3] << 12);
-                    dest[1] = src[4] | (src[5] << 4) | (src[6] << 8) | (src[7] << 12);
+                    dest[0] = src[0] | (src[1] << 4) | (src[2] << 8) | (src[3] << 0xC);
+                    dest[1] = src[4] | (src[5] << 4) | (src[6] << 8) | (src[7] << 0xC);
                 }
             }
         }

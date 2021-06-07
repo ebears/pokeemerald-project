@@ -1229,7 +1229,7 @@ gTVTodaysRivalTrainerText06:: @ 082849AE
 	.string "Let's all keep moving forward\n"
 	.string "and ahead of our rivals!$"
 
-TrendWatcher_Text_Intro:: @ 08284A3E
+gTVDewfordTrendWatcherNetworkText00:: @ 08284A3E
 	.string "Dewford Trend-Watcher Network!\p"
 	.string "MC: Wassup?\n"
 	.string "We'll keep it real with the latest on\l"
@@ -1251,18 +1251,17 @@ TrendWatcher_Text_Intro:: @ 08284A3E
 	.string "MC: Uh, no. What we want to know is\n"
 	.string "what's the in thing of the moment…$"
 
-@ Identical to below, may have been different in other languages
-TrendWatcher_Text_MaleTaughtMePhrase:: @ 08284C55
+gTVDewfordTrendWatcherNetworkText01:: @ 08284C55
 	.string "Old man: {STR_VAR_1} {STR_VAR_2}\n"
 	.string "was what {STR_VAR_3} from Littleroot\l"
 	.string "taught me as being trendy…$"
 
-TrendWatcher_Text_FemaleTaughtMePhrase:: @ 08284C9B
+gTVDewfordTrendWatcherNetworkText02:: @ 08284C9B
 	.string "Old man: {STR_VAR_1} {STR_VAR_2}\n"
 	.string "was what {STR_VAR_3} from Littleroot\l"
 	.string "taught me as being trendy…$"
 
-TrendWatcher_Text_PhraseWasHopeless:: @ 08284CE1
+gTVDewfordTrendWatcherNetworkText03:: @ 08284CE1
 	.string "But it was utterly hopeless.\p"
 	.string "{STR_VAR_1} {STR_VAR_2} festival!\p"
 	.string "{STR_VAR_1} {STR_VAR_2} contest!\p"
@@ -1273,18 +1272,17 @@ TrendWatcher_Text_PhraseWasHopeless:: @ 08284CE1
 	.string "MC: Uh, excuse me, compadre, I need\n"
 	.string "to hear about what's in now…$"
 
-@ Identical to below, may have been different in other languages
-TrendWatcher_Text_MaleTellMeBigger:: @ 08284DB6
+gTVDewfordTrendWatcherNetworkText04:: @ 08284DB6
 	.string "Old man: {STR_VAR_3}!\n"
 	.string "Please, tell me something bigger than\l"
 	.string "that {STR_VAR_1} {STR_VAR_2}!$"
 
-TrendWatcher_Text_FemaleTellMeBigger:: @ 08284DF5
+gTVDewfordTrendWatcherNetworkText05:: @ 08284DF5
 	.string "Old man: {STR_VAR_3}!\n"
 	.string "Please, tell me something bigger than\l"
 	.string "that {STR_VAR_1} {STR_VAR_2}!$"
 
-TrendWatcher_Text_Outro:: @ 08284E34
+gTVDewfordTrendWatcherNetworkText06:: @ 08284E34
 	.string "MC: …Uh… So, there you have it,\n"
 	.string "all you trendy, hep cats out there!\p"
 	.string "{STR_VAR_1} {STR_VAR_2}…uh…\n"
@@ -1738,7 +1736,7 @@ gTVTrainerFanClubText11:: @ 08286B4F
 	.string "Fans: {STR_VAR_2}!\p"
 	.string "Fans: {STR_VAR_3}!$"
 
-TVSpotTheCuties_Text_Intro:: @ 08286D8F
+gTVCutiesText00:: @ 08286D8F
 	.string "Spot the Cuties!\n"
 	.string "Pokémon in Ribbons!\p"
 	.string "Hello, my sweet viewers!\p"
@@ -1750,29 +1748,29 @@ TVSpotTheCuties_Text_Intro:: @ 08286D8F
 	.string "Today's featured pretty Pokémon\n"
 	.string "is {STR_VAR_1}'s {STR_VAR_2}.$"
 
-TVSpotTheCuties_Text_RibbonsLow:: @ 08286E9D
+gTVCutiesText01:: @ 08286E9D
 	.string "The number of Ribbons that\n"
 	.string "{STR_VAR_2} wears is {STR_VAR_3}.\p"
 	.string "It says a lot about how much\n"
 	.string "{STR_VAR_1} adores the Pokémon.$"
 
-TVSpotTheCuties_Text_RibbonsMid:: @ 08286EFC
+gTVCutiesText02:: @ 08286EFC
 	.string "{STR_VAR_2} wears an amazing\n"
 	.string "{STR_VAR_3} Ribbons!\p"
 	.string "It speaks volumes about {STR_VAR_1}'s\n"
 	.string "commitment to the Pokémon!$"
 
-TVSpotTheCuties_Text_RibbonsHigh:: @ 08286F54
+gTVCutiesText03:: @ 08286F54
 	.string "{STR_VAR_2} wears an incredible\n"
 	.string "{STR_VAR_3} Ribbons!\p"
 	.string "It shows you {STR_VAR_1}'s total\n"
 	.string "dedication as a collector!$"
 
-TVSpotTheCuties_Text_RibbonIntro:: @ 08286FAA
+gTVCutiesText04:: @ 08286FAA
 	.string "Let us take a closer look at the many\n"
 	.string "Ribbons worn by {STR_VAR_2}.$"
 
-TVSpotTheCuties_Text_RibbonChampion:: @ 08286FE4
+gTVCutiesText05:: @ 08286FE4
 	.string "The Champion Ribbon is especially\n"
 	.string "fetching.\p"
 	.string "{STR_VAR_2} received it upon entering\n"
@@ -1782,7 +1780,7 @@ TVSpotTheCuties_Text_RibbonChampion:: @ 08286FE4
 	.string "{STR_VAR_2} and the Champ Ribbon!\n"
 	.string "The combination is super effective!$"
 
-TVSpotTheCuties_Text_RibbonCool:: @ 082870A3
+gTVCutiesText06:: @ 082870A3
 	.string "The Cool Ribbon is especially\n"
 	.string "fetching.\p"
 	.string "{STR_VAR_2} received it for winning\n"
@@ -1792,7 +1790,7 @@ TVSpotTheCuties_Text_RibbonCool:: @ 082870A3
 	.string "{STR_VAR_2} and the Cool Ribbon!\n"
 	.string "The combination is super effective!$"
 
-TVSpotTheCuties_Text_RibbonBeauty:: @ 0828715A
+gTVCutiesText07:: @ 0828715A
 	.string "The Beauty Ribbon is especially\n"
 	.string "fetching.\p"
 	.string "{STR_VAR_2} received it for winning\n"
@@ -1802,7 +1800,7 @@ TVSpotTheCuties_Text_RibbonBeauty:: @ 0828715A
 	.string "{STR_VAR_2} and the Beauty Ribbon!\n"
 	.string "The combination is super effective!$"
 
-TVSpotTheCuties_Text_RibbonCute:: @ 08287215
+gTVCutiesText08:: @ 08287215
 	.string "The Cute Ribbon is especially\n"
 	.string "fetching.\p"
 	.string "{STR_VAR_2} received it for winning\n"
@@ -1812,7 +1810,7 @@ TVSpotTheCuties_Text_RibbonCute:: @ 08287215
 	.string "{STR_VAR_2} and the Cute Ribbon!\n"
 	.string "The combination is super effective!$"
 
-TVSpotTheCuties_Text_RibbonSmart:: @ 082872CC
+gTVCutiesText09:: @ 082872CC
 	.string "The Smart Ribbon is especially\n"
 	.string "fetching.\p"
 	.string "{STR_VAR_2} received it for winning\n"
@@ -1822,7 +1820,7 @@ TVSpotTheCuties_Text_RibbonSmart:: @ 082872CC
 	.string "{STR_VAR_2} and the Smart Ribbon!\n"
 	.string "The combination is super effective!$"
 
-TVSpotTheCuties_Text_RibbonTough:: @ 08287387
+gTVCutiesText10:: @ 08287387
 	.string "The Tough Ribbon is especially\n"
 	.string "fetching.\p"
 	.string "{STR_VAR_2} received it for winning\n"
@@ -1832,7 +1830,7 @@ TVSpotTheCuties_Text_RibbonTough:: @ 08287387
 	.string "{STR_VAR_2} and the Tough Ribbon!\n"
 	.string "The combination is super effective!$"
 
-TVSpotTheCuties_Text_RibbonWinning:: @ 08287442
+gTVCutiesText11:: @ 08287442
 	.string "The Winning Ribbon is especially\n"
 	.string "fetching.\p"
 	.string "{STR_VAR_2} received it for its feats\n"
@@ -1842,7 +1840,7 @@ TVSpotTheCuties_Text_RibbonWinning:: @ 08287442
 	.string "{STR_VAR_2} and the Winning Ribbon!\n"
 	.string "The combination is super effective!$"
 
-TVSpotTheCuties_Text_RibbonVictory:: @ 08287508
+gTVCutiesText12:: @ 08287508
 	.string "The Victory Ribbon is especially\n"
 	.string "fetching.\p"
 	.string "{STR_VAR_2} received it for its feats\n"
@@ -1852,7 +1850,7 @@ TVSpotTheCuties_Text_RibbonVictory:: @ 08287508
 	.string "{STR_VAR_2} and the Victory Ribbon!\n"
 	.string "The combination is super effective!$"
 
-TVSpotTheCuties_Text_RibbonArtist:: @ 082875D9
+gTVCutiesText13:: @ 082875D9
 	.string "The Artist Ribbon is especially\n"
 	.string "fetching.\p"
 	.string "{STR_VAR_2} received it for being\n"
@@ -1862,7 +1860,7 @@ TVSpotTheCuties_Text_RibbonArtist:: @ 082875D9
 	.string "{STR_VAR_2} and the Artist Ribbon!\n"
 	.string "The combination is super effective!$"
 
-TVSpotTheCuties_Text_RibbonEffort:: @ 082876A1
+gTVCutiesText14:: @ 082876A1
 	.string "The Hard Worker Ribbon is\n"
 	.string "especially fetching.\p"
 	.string "{STR_VAR_2} received it for being\n"
@@ -1872,7 +1870,7 @@ TVSpotTheCuties_Text_RibbonEffort:: @ 082876A1
 	.string "{STR_VAR_2} and the Hard Worker Ribbon!\n"
 	.string "The combination is super effective!$"
 
-TVSpotTheCuties_Text_Outro:: @ 08287779
+gTVCutiesText15:: @ 08287779
 	.string "…Sigh…\p"
 	.string "Ribbons and Pokémon…\n"
 	.string "They go so wonderfully together!\p"

@@ -389,10 +389,10 @@ void GoToBattlePyramidBagMenu(u8 a0, void (*callback)(void))
 
     gPyramidBagResources->callback2 = NULL;
     gPyramidBagResources->unk814 = 0xFF;
-    gPyramidBagResources->scrollIndicatorsTaskId = TASK_NONE;
+    gPyramidBagResources->scrollIndicatorsTaskId = 0xFF;
 
     memset(gPyramidBagResources->itemsSpriteIds, 0xFF, sizeof(gPyramidBagResources->itemsSpriteIds));
-    memset(gPyramidBagResources->windowIds, WINDOW_NONE, sizeof(gPyramidBagResources->windowIds));
+    memset(gPyramidBagResources->windowIds, 0xFF, sizeof(gPyramidBagResources->windowIds));
 
     SetMainCallback2(sub_81C504C);
 }
@@ -493,11 +493,11 @@ static bool8 sub_81C5078(void)
             gMain.state++;
             break;
         case 15:
-            BlendPalettes(PALETTES_ALL, 0x10, 0);
+            BlendPalettes(0xFFFFFFFF, 0x10, 0);
             gMain.state++;
             break;
         case 16:
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK);
+            BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_BLACK);
             gPaletteFade.bufferTransferDisabled = FALSE;
             gMain.state++;
             break;
@@ -657,16 +657,16 @@ static void PrintItemDescription(s32 listMenuId)
 
 static void AddScrollArrow(void)
 {
-    if (gPyramidBagResources->scrollIndicatorsTaskId == TASK_NONE)
+    if (gPyramidBagResources->scrollIndicatorsTaskId == 0xFF)
         gPyramidBagResources->scrollIndicatorsTaskId = AddScrollIndicatorArrowPairParameterized(2, 172, 12, 148, gPyramidBagResources->listMenuCount - gPyramidBagResources->listMenuMaxShown, 0xB5E, 0xB5E, &gPyramidBagCursorData.scrollPosition);
 }
 
 static void RemoveScrollArrow(void)
 {
-    if (gPyramidBagResources->scrollIndicatorsTaskId != TASK_NONE)
+    if (gPyramidBagResources->scrollIndicatorsTaskId != 0xFF)
     {
         RemoveScrollIndicatorArrowPair(gPyramidBagResources->scrollIndicatorsTaskId);
-        gPyramidBagResources->scrollIndicatorsTaskId = TASK_NONE;
+        gPyramidBagResources->scrollIndicatorsTaskId = 0xFF;
     }
 }
 
@@ -811,7 +811,7 @@ static void sub_81C5AB8(u8 y, u8 arg1)
 
 void CloseBattlePyramidBagAndSetCallback(u8 taskId)
 {
-    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
+    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = sub_81C5B4C;
 }
 
@@ -1428,7 +1428,7 @@ static u8 sub_81C6D08(u8 windowArrayId)
 static u8 sub_81C6D24(u8 windowArrayId)
 {
     u8 *windowId = &gPyramidBagResources->windowIds[windowArrayId];
-    if (*windowId == WINDOW_NONE)
+    if (*windowId == 0xFF)
     {
         *windowId = AddWindow(&gUnknown_0861F350[windowArrayId]);
         DrawStdFrameWithCustomTileAndPalette(*windowId, FALSE, 1, 0xE);
@@ -1440,13 +1440,13 @@ static u8 sub_81C6D24(u8 windowArrayId)
 static void sub_81C6D6C(u8 windowArrayId)
 {
     u8 *windowId = &gPyramidBagResources->windowIds[windowArrayId];
-    if (*windowId != WINDOW_NONE)
+    if (*windowId != 0xFF)
     {
         ClearStdWindowAndFrameToTransparent(*windowId, FALSE);
         ClearWindowTilemap(*windowId);
         RemoveWindow(*windowId);
         ScheduleBgCopyTilemapToVram(1);
-        *windowId = WINDOW_NONE;
+        *windowId = 0xFF;
     }
 }
 
@@ -1475,13 +1475,13 @@ static void CloseBattlePyramidBagTextWindow(void)
 static void sub_81C6E38(u8 itemSpriteArrayId)
 {
     u8 *spriteId = &gPyramidBagResources->itemsSpriteIds[itemSpriteArrayId];
-    if (*spriteId != SPRITE_NONE)
+    if (*spriteId != 0xFF)
     {
         FreeSpriteTilesByTag(ITEM_IMAGE_TAG + itemSpriteArrayId);
         FreeSpritePaletteByTag(ITEM_IMAGE_TAG + itemSpriteArrayId);
         FreeSpriteOamMatrix(&gSprites[*spriteId]);
         DestroySprite(&gSprites[*spriteId]);
-        *spriteId = SPRITE_NONE;
+        *spriteId = 0xFF;
     }
 }
 
@@ -1526,7 +1526,7 @@ static void ShowItemImage(u16 itemId, u8 itemSpriteArrayId)
 {
     u8 itemSpriteId;
     u8 *spriteId = &gPyramidBagResources->itemsSpriteIds[itemSpriteArrayId + 1];
-    if (*spriteId == SPRITE_NONE)
+    if (*spriteId == 0xFF)
     {
         FreeSpriteTilesByTag(ITEM_IMAGE_TAG + 1 + itemSpriteArrayId);
         FreeSpritePaletteByTag(ITEM_IMAGE_TAG + 1 + itemSpriteArrayId);

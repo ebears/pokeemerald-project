@@ -930,8 +930,8 @@ static void CB2_LoadInterface(void)
         RunDisplaySubtasks();
         if (!IsDisplaySubtask0Active())
         {
-            BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
-            BeginNormalPaletteFade(PALETTES_ALL, -1, 16, 0, RGB_BLACK);
+            BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
+            BeginNormalPaletteFade(0xFFFFFFFF, -1, 16, 0, RGB_BLACK);
             SetVBlankCallback(VBlankCB_UnionRoomChatMain);
             gMain.state++;
         }
@@ -1567,7 +1567,7 @@ static void Chat_SaveAndExit(void)
             sChat->funcState = 12;
         break;
     case 12:
-        BeginNormalPaletteFade(PALETTES_ALL, -1, 0, 16, RGB_BLACK);
+        BeginNormalPaletteFade(0xFFFFFFFF, -1, 0, 16, RGB_BLACK);
         sChat->funcState = 13;
         break;
     case 13:
@@ -2157,8 +2157,8 @@ static void FreeDisplay(void)
 
 static void InitDisplay(struct UnionRoomChatDisplay *display)
 {
-    display->yesNoMenuWindowId = WINDOW_NONE;
-    display->messageWindowId = WINDOW_NONE;
+    display->yesNoMenuWindowId = 0xFF;
+    display->messageWindowId = 0xFF;
     display->currLine = 0;
 }
 
@@ -2724,7 +2724,7 @@ static void AddYesNoMenuAt(u8 left, u8 top, u8 initialCursorPos)
     template.paletteNum = 14;
     template.baseBlock = 0x52;
     sDisplay->yesNoMenuWindowId = AddWindow(&template);
-    if (sDisplay->yesNoMenuWindowId != WINDOW_NONE)
+    if (sDisplay->yesNoMenuWindowId != 0xFF)
     {
         FillWindowPixelBuffer(sDisplay->yesNoMenuWindowId, PIXEL_FILL(1));
         PutWindowTilemap(sDisplay->yesNoMenuWindowId);
@@ -2737,7 +2737,7 @@ static void AddYesNoMenuAt(u8 left, u8 top, u8 initialCursorPos)
 
 static void HideYesNoMenuWindow(void)
 {
-    if (sDisplay->yesNoMenuWindowId != WINDOW_NONE)
+    if (sDisplay->yesNoMenuWindowId != 0xFF)
     {
         ClearStdWindowAndFrameToTransparent(sDisplay->yesNoMenuWindowId, FALSE);
         ClearWindowTilemap(sDisplay->yesNoMenuWindowId);
@@ -2746,10 +2746,10 @@ static void HideYesNoMenuWindow(void)
 
 static void DestroyYesNoMenuWindow(void)
 {
-    if (sDisplay->yesNoMenuWindowId != WINDOW_NONE)
+    if (sDisplay->yesNoMenuWindowId != 0xFF)
     {
         RemoveWindow(sDisplay->yesNoMenuWindowId);
-        sDisplay->yesNoMenuWindowId = WINDOW_NONE;
+        sDisplay->yesNoMenuWindowId = 0xFF;
     }
 }
 
@@ -2778,7 +2778,7 @@ static void AddStdMessageWindow(int msgId, u16 bg0vofs)
 
     sDisplay->messageWindowId = AddWindow(&template);
     windowId = sDisplay->messageWindowId;
-    if (sDisplay->messageWindowId == WINDOW_NONE)
+    if (sDisplay->messageWindowId == 0xFF)
         return;
 
     if (sDisplayStdMessages[msgId].hasPlaceholders)
@@ -2828,7 +2828,7 @@ static void AddStdMessageWindow(int msgId, u16 bg0vofs)
 
 static void HideStdMessageWindow(void)
 {
-    if (sDisplay->messageWindowId != WINDOW_NONE)
+    if (sDisplay->messageWindowId != 0xFF)
     {
         ClearStdWindowAndFrameToTransparent(sDisplay->messageWindowId, FALSE);
         ClearWindowTilemap(sDisplay->messageWindowId);
@@ -2839,10 +2839,10 @@ static void HideStdMessageWindow(void)
 
 static void DestroyStdMessageWindow(void)
 {
-    if (sDisplay->messageWindowId != WINDOW_NONE)
+    if (sDisplay->messageWindowId != 0xFF)
     {
         RemoveWindow(sDisplay->messageWindowId);
-        sDisplay->messageWindowId = WINDOW_NONE;
+        sDisplay->messageWindowId = 0xFF;
     }
 }
 

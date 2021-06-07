@@ -125,14 +125,14 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion);
 static void GetLinkPlayerCoords(u8 linkPlayerId, u16 *x, u16 *y);
 static u8 GetLinkPlayerFacingDirection(u8 linkPlayerId);
 static u8 GetLinkPlayerElevation(u8 linkPlayerId);
-static s32 GetLinkPlayerObjectStepTimer(u8 linkPlayerId);
+static s32 sub_80878E4(u8 linkPlayerId);
 static u8 GetLinkPlayerIdAt(s16 x, s16 y);
 static void SetPlayerFacingDirection(u8 linkPlayerId, u8 a2);
 static void ZeroObjectEvent(struct ObjectEvent *objEvent);
 static void SpawnLinkPlayerObjectEvent(u8 linkPlayerId, s16 x, s16 y, u8 a4);
 static void InitLinkPlayerObjectEventPos(struct ObjectEvent *objEvent, s16 x, s16 y);
-static void SetLinkPlayerObjectRange(u8 linkPlayerId, u8 a2);
-static void DestroyLinkPlayerObject(u8 linkPlayerId);
+static void sub_80877DC(u8 linkPlayerId, u8 a2);
+static void sub_808780C(u8 linkPlayerId);
 static u8 GetSpriteForLinkedPlayer(u8 linkPlayerId);
 static void RunTerminateLinkScript(void);
 static u32 GetLinkSendQueueLength(void);
@@ -172,7 +172,7 @@ static u8 sPlayerTradingStates[MAX_LINK_PLAYERS];
 // adjusted key code, effectively intercepting the input before anything
 // can process it.
 static u16 (*sPlayerKeyInterceptCallback)(u32);
-static bool8 sReceivingFromLink;
+static bool8 sUnknown_03000E18;
 static u8 sRfuKeepAliveTimer;
 
 // IWRAM common
@@ -1136,7 +1136,7 @@ void Overworld_PlaySpecialMapMusic(void)
 {
     u16 music = GetCurrLocationDefaultMusic();
 
-    if (music != MUS_ABNORMAL_WEATHER && music != MUS_NONE)
+    if (music != MUS_ABNORMAL_WEATHER && music != 0xFFFF)
     {
         if (gSaveBlock1Ptr->savedMusic)
             music = gSaveBlock1Ptr->savedMusic;
@@ -1166,7 +1166,7 @@ static void TransitionMapMusic(void)
     {
         u16 newMusic = GetWarpDestinationMusic();
         u16 currentMusic = GetCurrentMapMusic();
-        if (newMusic != MUS_ABNORMAL_WEATHER && newMusic != MUS_NONE)
+        if (newMusic != MUS_ABNORMAL_WEATHER && newMusic != 0xFFFF)
         {
             if (currentMusic == MUS_UNDERWATER || currentMusic == MUS_SURF)
                 return;
@@ -1629,7 +1629,7 @@ static void CB2_ReturnToFieldLocal(void)
 
 static void CB2_ReturnToFieldLink(void)
 {
-    if (!Overworld_LinkRecvQueueLengthMoreThan2() && ReturnToFieldLink(&gMain.state))
+    if (!sub_8087598() && ReturnToFieldLink(&gMain.state))
         SetMainCallback2(CB2_Overworld);
 }
 
@@ -2063,7 +2063,7 @@ static void sub_80867D8(void)
     ScanlineEffect_Stop();
 
     DmaClear16(3, PLTT + 2, PLTT_SIZE - 2);
-    DmaFillLarge16(3, 0, (void *)VRAM, VRAM_SIZE, 0x1000);
+    DmaFillLarge16(3, 0, (void *)(VRAM + 0x0), 0x18000, 0x1000);
     ResetOamRange(0, 128);
     LoadOam();
 }
@@ -2826,18 +2826,18 @@ static void RunTerminateLinkScript(void)
     ScriptContext2_Enable();
 }
 
-bool32 Overworld_LinkRecvQueueLengthMoreThan2(void)
+bool32 sub_8087598(void)
 {
     if (!IsUpdateLinkStateCBActive())
         return FALSE;
     if (GetLinkRecvQueueLength() >= 3)
-        sReceivingFromLink = TRUE;
+        sUnknown_03000E18 = TRUE;
     else
-        sReceivingFromLink = FALSE;
-    return sReceivingFromLink;
+        sUnknown_03000E18 = FALSE;
+    return sUnknown_03000E18;
 }
 
-bool32 Overworld_RecvKeysFromLinkIsRunning(void)
+bool32 sub_80875C8(void)
 {
     u8 temp;
 
@@ -2852,8 +2852,8 @@ bool32 Overworld_RecvKeysFromLinkIsRunning(void)
     else if (sPlayerKeyInterceptCallback != KeyInterCB_DeferToEventScript)
         return FALSE;
 
-    temp = sReceivingFromLink;
-    sReceivingFromLink = FALSE;
+    temp = sUnknown_03000E18;
+    sUnknown_03000E18 = FALSE;
 
     if (temp == TRUE)
         return TRUE;
@@ -2863,7 +2863,7 @@ bool32 Overworld_RecvKeysFromLinkIsRunning(void)
         return FALSE;
 }
 
-bool32 Overworld_SendKeysToLinkIsRunning(void)
+bool32 sub_8087634(void)
 {
     if (GetLinkSendQueueLength() < 2)
         return FALSE;
@@ -2877,7 +2877,7 @@ bool32 Overworld_SendKeysToLinkIsRunning(void)
         return FALSE;
 }
 
-bool32 IsSendingKeysOverCable(void)
+bool32 sub_808766C(void)
 {
     if (gWirelessCommType != 0)
         return FALSE;
@@ -2926,15 +2926,15 @@ static void SpawnLinkPlayerObjectEvent(u8 linkPlayerId, s16 x, s16 y, u8 gender)
     ZeroLinkPlayerObjectEvent(linkPlayerObjEvent);
     ZeroObjectEvent(objEvent);
 
-    linkPlayerObjEvent->active = TRUE;
+    linkPlayerObjEvent->active = 1;
     linkPlayerObjEvent->linkPlayerId = linkPlayerId;
     linkPlayerObjEvent->objEventId = objEventId;
     linkPlayerObjEvent->movementMode = MOVEMENT_MODE_FREE;
 
-    objEvent->active = TRUE;
+    objEvent->active = 1;
     linkGender(objEvent) = gender;
     linkDirection(objEvent) = DIR_NORTH;
-    objEvent->spriteId = MAX_SPRITES;
+    objEvent->spriteId = 64;
 
     InitLinkPlayerObjectEventPos(objEvent, x, y);
 }
@@ -2950,7 +2950,7 @@ static void InitLinkPlayerObjectEventPos(struct ObjectEvent *objEvent, s16 x, s1
     ObjectEventUpdateZCoord(objEvent);
 }
 
-static void SetLinkPlayerObjectRange(u8 linkPlayerId, u8 dir)
+static void sub_80877DC(u8 linkPlayerId, u8 dir)
 {
     if (gLinkPlayerObjectEvents[linkPlayerId].active)
     {
@@ -2960,7 +2960,7 @@ static void SetLinkPlayerObjectRange(u8 linkPlayerId, u8 dir)
     }
 }
 
-static void DestroyLinkPlayerObject(u8 linkPlayerId)
+static void sub_808780C(u8 linkPlayerId)
 {
     struct LinkPlayerObjectEvent *linkPlayerObjEvent = &gLinkPlayerObjectEvents[linkPlayerId];
     u8 objEventId = linkPlayerObjEvent->objEventId;
@@ -3001,7 +3001,7 @@ static u8 GetLinkPlayerElevation(u8 linkPlayerId)
     return objEvent->currentElevation;
 }
 
-static s32 GetLinkPlayerObjectStepTimer(u8 linkPlayerId)
+static s32 sub_80878E4(u8 linkPlayerId)
 {
     u8 objEventId = gLinkPlayerObjectEvents[linkPlayerId].objEventId;
     struct ObjectEvent *objEvent = &gObjectEvents[objEventId];
@@ -3051,32 +3051,32 @@ static void SetPlayerFacingDirection(u8 linkPlayerId, u8 facing)
 }
 
 
-static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 a3)
 {
-    return gLinkPlayerFacingHandlers[dir](linkPlayerObjEvent, objEvent, dir);
+    return gLinkPlayerFacingHandlers[a3](linkPlayerObjEvent, objEvent, a3);
 }
 
-static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 a3)
 {
     return FACING_UP;
 }
 
 // Duplicate Function
-static u8 MovementEventModeCB_Normal_2(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static u8 MovementEventModeCB_Normal_2(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 a3)
 {
-    return gLinkPlayerFacingHandlers[dir](linkPlayerObjEvent, objEvent, dir);
+    return gLinkPlayerFacingHandlers[a3](linkPlayerObjEvent, objEvent, a3);
 }
 
-static bool8 FacingHandler_DoNothing(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static bool8 FacingHandler_DoNothing(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 a3)
 {
     return FALSE;
 }
 
-static bool8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static bool8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 a3)
 {
     s16 x, y;
 
-    linkDirection(objEvent) = FlipVerticalAndClearForced(dir, linkDirection(objEvent));
+    linkDirection(objEvent) = FlipVerticalAndClearForced(a3, linkDirection(objEvent));
     ObjectEventMoveDestCoords(objEvent, linkDirection(objEvent), &x, &y);
 
     if (LinkPlayerDetectCollision(linkPlayerObjEvent->objEventId, linkDirection(objEvent), x, y))
@@ -3092,9 +3092,9 @@ static bool8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *linkPlayer
     }
 }
 
-static bool8 FacingHandler_ForcedFacingChange(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static bool8 FacingHandler_ForcedFacingChange(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 a3)
 {
-    linkDirection(objEvent) = FlipVerticalAndClearForced(dir, linkDirection(objEvent));
+    linkDirection(objEvent) = FlipVerticalAndClearForced(a3, linkDirection(objEvent));
     return FALSE;
 }
 

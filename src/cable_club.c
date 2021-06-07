@@ -82,7 +82,7 @@ static void Task_ReestablishLinkAwaitConfirmation(u8 taskId);
 
 static void CreateLinkupTask(u8 minPlayers, u8 maxPlayers)
 {
-    if (FindTaskIdByFunc(Task_LinkupStart) == TASK_NONE)
+    if (FindTaskIdByFunc(Task_LinkupStart) == 0xFF)
     {
         u8 taskId1;
 
@@ -627,7 +627,7 @@ void ValidateMixingGameLanguage(void)
 {
     u32 taskId = FindTaskIdByFunc(Task_ValidateMixingGameLanguage);
 
-    if (taskId == TASK_NONE)
+    if (taskId == 0xFF)
     {
         taskId = CreateTask(Task_ValidateMixingGameLanguage, 80);
         gTasks[taskId].tState = 0;
@@ -904,7 +904,7 @@ static void Task_StartWirelessCableClubBattle(u8 taskId)
             {
                 struct LinkPlayer *player = (struct LinkPlayer *)gBlockRecvBuffer[i];
                 gLinkPlayers[i] = *player;
-                ConvertLinkPlayerName(&gLinkPlayers[i]);
+                sub_800B524(&gLinkPlayers[i]);
                 ResetBlockReceivedFlag(i);
             }
             tState = 4;
@@ -1267,8 +1267,7 @@ static void sub_80B3AD0(u8 taskId)
 
 #define tTimer data[1]
 
-// Confirm that all cabled link players are connected
-void Task_ReconnectWithLinkPlayers(u8 taskId)
+void sub_80B3AF8(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 

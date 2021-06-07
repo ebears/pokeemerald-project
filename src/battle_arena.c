@@ -774,8 +774,7 @@ void BattleArena_DeductMindPoints(u8 battler, u16 stringId)
     }
 }
 
-// Unused
-static void UpdateHPAtStart(u8 battler)
+void sub_81A586C(u8 battler) // Unused.
 {
     u16 *hpAtStart = gBattleStruct->arenaStartHp;
 

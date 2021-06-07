@@ -1304,7 +1304,7 @@ static bool8 LoadGraphics(void)
         break;
     case 17:
         sMonSummaryScreen->spriteIds[SPRITE_ARR_ID_MON] = LoadMonGfxAndSprite(&sMonSummaryScreen->currentMon, &sMonSummaryScreen->switchCounter);
-        if (sMonSummaryScreen->spriteIds[SPRITE_ARR_ID_MON] != SPRITE_NONE)
+        if (sMonSummaryScreen->spriteIds[SPRITE_ARR_ID_MON] != 0xFF)
         {
             sMonSummaryScreen->switchCounter = 0;
             gMain.state++;
@@ -1334,11 +1334,11 @@ static bool8 LoadGraphics(void)
         gMain.state++;
         break;
     case 23:
-        BlendPalettes(PALETTES_ALL, 16, 0);
+        BlendPalettes(0xFFFFFFFF, 16, 0);
         gMain.state++;
         break;
     case 24:
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+        BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
         gPaletteFade.bufferTransferDisabled = 0;
         gMain.state++;
         break;
@@ -1560,7 +1560,7 @@ static void FreeSummaryScreen(void)
 
 static void BeginCloseSummaryScreen(u8 taskId)
 {
-    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+    BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = CloseSummaryScreen;
 }
 
@@ -1738,7 +1738,7 @@ static void Task_ChangeSummaryMon(u8 taskId)
         break;
     case 8:
         sMonSummaryScreen->spriteIds[SPRITE_ARR_ID_MON] = LoadMonGfxAndSprite(&sMonSummaryScreen->currentMon, &data[1]);
-        if (sMonSummaryScreen->spriteIds[SPRITE_ARR_ID_MON] == SPRITE_NONE)
+        if (sMonSummaryScreen->spriteIds[SPRITE_ARR_ID_MON] == 0xFF)
             return;
         gSprites[sMonSummaryScreen->spriteIds[SPRITE_ARR_ID_MON]].data[2] = 1;
         TryDrawExperienceProgressBar();
@@ -2498,7 +2498,7 @@ static void HandlePowerAccTilemap(u16 a, s16 b)
     else
     {
         u8 taskId = FindTaskIdByFunc(Task_ShowPowerAccWindow);
-        if (taskId == TASK_NONE)
+        if (taskId == 0xFF)
             taskId = CreateTask(Task_ShowPowerAccWindow, 8);
         gTasks[taskId].data[0] = b;
         gTasks[taskId].data[1] = a;
@@ -2550,7 +2550,7 @@ static void HandleAppealJamTilemap(u16 a, s16 b, u16 move)
     else
     {
         u8 taskId = FindTaskIdByFunc(Task_ShowAppealJamWindow);
-        if (taskId == TASK_NONE)
+        if (taskId == 0xFF)
             taskId = CreateTask(Task_ShowAppealJamWindow, 8);
         gTasks[taskId].data[0] = b;
         gTasks[taskId].data[1] = a;
@@ -2777,7 +2777,7 @@ static void ResetWindows(void)
     for (i = 0; i < PSS_LABEL_WINDOW_END; i++)
         FillWindowPixelBuffer(i, PIXEL_FILL(0));
     for (i = 0; i < ARRAY_COUNT(sMonSummaryScreen->windowIds); i++)
-        sMonSummaryScreen->windowIds[i] = WINDOW_NONE;
+        sMonSummaryScreen->windowIds[i] = 0xFF;
 }
 
 static void PrintTextOnWindow(u8 windowId, const u8 *string, u8 x, u8 y, u8 lineSpacing, u8 colorId)
@@ -3038,7 +3038,7 @@ static void ClearPageWindowTilemaps(u8 page)
 static u8 AddWindowFromTemplateList(const struct WindowTemplate *template, u8 templateId)
 {
     u8 *windowIdPtr = &sMonSummaryScreen->windowIds[templateId];
-    if (*windowIdPtr == WINDOW_NONE)
+    if (*windowIdPtr == 0xFF)
     {
         *windowIdPtr = AddWindow(&template[templateId]);
         FillWindowPixelBuffer(*windowIdPtr, PIXEL_FILL(0));
@@ -3049,11 +3049,11 @@ static u8 AddWindowFromTemplateList(const struct WindowTemplate *template, u8 te
 static void RemoveWindowByIndex(u8 windowIndex)
 {
     u8 *windowIdPtr = &sMonSummaryScreen->windowIds[windowIndex];
-    if (*windowIdPtr != WINDOW_NONE)
+    if (*windowIdPtr != 0xFF)
     {
         ClearWindowTilemap(*windowIdPtr);
         RemoveWindow(*windowIdPtr);
-        *windowIdPtr = WINDOW_NONE;
+        *windowIdPtr = 0xFF;
     }
 }
 
@@ -3062,7 +3062,7 @@ static void PrintPageSpecificText(u8 pageIndex)
     u16 i;
     for (i = 0; i < ARRAY_COUNT(sMonSummaryScreen->windowIds); i++)
     {
-        if (sMonSummaryScreen->windowIds[i] != WINDOW_NONE)
+        if (sMonSummaryScreen->windowIds[i] != 0xFF)
             FillWindowPixelBuffer(sMonSummaryScreen->windowIds[i], PIXEL_FILL(0));
     }
     sTextPrinterFunctions[pageIndex]();
@@ -3884,15 +3884,15 @@ static void ResetSpriteIds(void)
     u8 i;
 
     for (i = 0; i < ARRAY_COUNT(sMonSummaryScreen->spriteIds); i++)
-        sMonSummaryScreen->spriteIds[i] = SPRITE_NONE;
+        sMonSummaryScreen->spriteIds[i] = 0xFF;
 }
 
 static void DestroySpriteInArray(u8 spriteArrayId)
 {
-    if (sMonSummaryScreen->spriteIds[spriteArrayId] != SPRITE_NONE)
+    if (sMonSummaryScreen->spriteIds[spriteArrayId] != 0xFF)
     {
         DestroySprite(&gSprites[sMonSummaryScreen->spriteIds[spriteArrayId]]);
-        sMonSummaryScreen->spriteIds[spriteArrayId] = SPRITE_NONE;
+        sMonSummaryScreen->spriteIds[spriteArrayId] = 0xFF;
     }
 }
 
@@ -3908,7 +3908,7 @@ static void HidePageSpecificSprites(void)
 
     for (i = SPRITE_ARR_ID_TYPE; i < ARRAY_COUNT(sMonSummaryScreen->spriteIds); i++)
     {
-        if (sMonSummaryScreen->spriteIds[i] != SPRITE_NONE)
+        if (sMonSummaryScreen->spriteIds[i] != 0xFF)
             SetSpriteInvisibility(i, TRUE);
     }
 }
@@ -3937,7 +3937,7 @@ static void CreateMoveTypeIcons(void)
 
     for (i = SPRITE_ARR_ID_TYPE; i < SPRITE_ARR_ID_TYPE + 5; i++)
     {
-        if (sMonSummaryScreen->spriteIds[i] == SPRITE_NONE)
+        if (sMonSummaryScreen->spriteIds[i] == 0xFF)
             sMonSummaryScreen->spriteIds[i] = CreateSprite(&sSpriteTemplate_MoveTypes, 0, 0, 2);
 
         SetSpriteInvisibility(i, TRUE);
@@ -4123,10 +4123,10 @@ void SummaryScreen_SetUnknownTaskId(u8 taskId)
 
 void SummaryScreen_DestroyUnknownTask(void)
 {
-    if (sUnknownTaskId != TASK_NONE)
+    if (sUnknownTaskId != 0xFF)
     {
         DestroyTask(sUnknownTaskId);
-        sUnknownTaskId = TASK_NONE;
+        sUnknownTaskId = 0xFF;
     }
 }
 
@@ -4159,7 +4159,7 @@ static void StopPokemonAnimations(void)  // A subtle effect, this function stops
 
 static void CreateMonMarkingsSprite(struct Pokemon *mon)
 {
-    struct Sprite *sprite = CreateMonMarkingAllCombosSprite(TAG_MON_MARKINGS, TAG_MON_MARKINGS, sSummaryMarkingsPalette);
+    struct Sprite *sprite = CreateMonMarkingsSpriteWithPal(TAG_MON_MARKINGS, TAG_MON_MARKINGS, sSummaryMarkingsPalette);
 
     sMonSummaryScreen->markingsSprite = sprite;
     if (sprite != NULL)
@@ -4193,7 +4193,7 @@ static void CreateSetStatusSprite(void)
     u8 *spriteId = &sMonSummaryScreen->spriteIds[SPRITE_ARR_ID_STATUS];
     u8 statusAnim;
 
-    if (*spriteId == SPRITE_NONE)
+    if (*spriteId == 0xFF)
         *spriteId = CreateSprite(&sSpriteTemplate_StatusCondition, 64, 152, 0);
 
     statusAnim = GetMonAilment(&sMonSummaryScreen->currentMon);

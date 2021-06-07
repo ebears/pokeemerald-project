@@ -10,9 +10,9 @@
 static void AnimFireSpiralInward(struct Sprite *);
 static void AnimFirePlume(struct Sprite *);
 static void AnimLargeFlame(struct Sprite *);
-static void AnimLargeFlame_Step(struct Sprite *);
-static void AnimUnused_8109064(struct Sprite *);
-static void AnimUnused_8109064_Step(struct Sprite *);
+static void sub_8109028(struct Sprite *);
+static void sub_8109064(struct Sprite *);
+static void sub_81090D8(struct Sprite *);
 static void AnimSunlight(struct Sprite *);
 static void AnimEmberFlare(struct Sprite *);
 static void AnimBurnFlame(struct Sprite *);
@@ -162,7 +162,7 @@ const struct SpriteTemplate gFirePlumeSpriteTemplate =
 };
 
 // Unused
-const struct SpriteTemplate gUnusedSpriteTemplate_08595440 =
+const struct SpriteTemplate gUnknown_08595440 =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
@@ -173,7 +173,7 @@ const struct SpriteTemplate gUnusedSpriteTemplate_08595440 =
     .callback = AnimFirePlume,
 };
 
-static const union AnimCmd sAnim_Unused_08595458[] =
+static const union AnimCmd gUnknown_08595458[] =
 {
     ANIMCMD_FRAME(16, 6),
     ANIMCMD_FRAME(32, 6),
@@ -181,21 +181,21 @@ static const union AnimCmd sAnim_Unused_08595458[] =
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd *const sAnims_Unused_08595468[] =
+static const union AnimCmd *const gUnknown_08595468[] =
 {
-    sAnim_Unused_08595458,
+    gUnknown_08595458,
 };
 
 // Unused
-const struct SpriteTemplate gUnusedSpriteTemplate_0859546C =
+const struct SpriteTemplate gUnknown_0859546C =
 {
     .tileTag = ANIM_TAG_SMALL_EMBER,
     .paletteTag = ANIM_TAG_SMALL_EMBER,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
-    .anims = sAnims_Unused_08595468,
+    .anims = gUnknown_08595468,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = AnimUnused_8109064,
+    .callback = sub_8109064,
 };
 
 static const union AffineAnimCmd sAffineAnim_SunlightRay[] =
@@ -316,23 +316,23 @@ const union AnimCmd *const gAnims_FireBlastCross[] =
     sAnim_FireBlastCross,
 };
 
-static const union AffineAnimCmd sAnim_Unused_08595544[] =
+static const union AffineAnimCmd gUnknown_08595544[] =
 {
     AFFINEANIMCMD_FRAME(0x0, 0x0, 0, 1),
     AFFINEANIMCMD_END,
 };
 
-static const union AffineAnimCmd sAnim_Unused_08595554[] =
+static const union AffineAnimCmd gUnknown_08595554[] =
 {
     AFFINEANIMCMD_FRAME(0xA0, 0xA0, 0, 0),
     AFFINEANIMCMD_END,
 };
 
 // Unused
-static const union AffineAnimCmd *const sAnims_Unused_08595564[] =
+static const union AffineAnimCmd *const gUnknown_08595564[] =
 {
-    sAnim_Unused_08595544,
-    sAnim_Unused_08595554,
+    gUnknown_08595544,
+    gUnknown_08595554,
 };
 
 const struct SpriteTemplate gFireBlastCrossSpriteTemplate =
@@ -597,7 +597,7 @@ static void AnimFirePlume(struct Sprite *sprite)
     sprite->data[4] = gBattleAnimArgs[3];
     sprite->data[3] = gBattleAnimArgs[5];
 
-    sprite->callback = AnimLargeFlame_Step;
+    sprite->callback = sub_8109028;
 }
 
 static void AnimLargeFlame(struct Sprite *sprite)
@@ -619,10 +619,10 @@ static void AnimLargeFlame(struct Sprite *sprite)
     sprite->data[4] = gBattleAnimArgs[3];
     sprite->data[3] = gBattleAnimArgs[5];
 
-    sprite->callback = AnimLargeFlame_Step;
+    sprite->callback = sub_8109028;
 }
 
-static void AnimLargeFlame_Step(struct Sprite *sprite)
+static void sub_8109028(struct Sprite *sprite)
 {
     if (++sprite->data[0] < sprite->data[4])
     {
@@ -634,7 +634,7 @@ static void AnimLargeFlame_Step(struct Sprite *sprite)
         DestroySpriteAndMatrix(sprite);
 }
 
-static void AnimUnused_8109064(struct Sprite *sprite)
+static void sub_8109064(struct Sprite *sprite)
 {
     SetSpriteCoordsToAnimAttackerCoords(sprite);
 
@@ -656,10 +656,10 @@ static void AnimUnused_8109064(struct Sprite *sprite)
     sprite->data[4] = gBattleAnimArgs[6];
     sprite->data[5] = 0;
 
-    sprite->callback = AnimUnused_8109064_Step;
+    sprite->callback = sub_81090D8;
 }
 
-static void AnimUnused_8109064_Step(struct Sprite *sprite)
+static void sub_81090D8(struct Sprite *sprite)
 {
     if (sprite->data[3])
     {
@@ -696,6 +696,8 @@ static void AnimSunlight(struct Sprite *sprite)
     sprite->callback = StartAnimLinearTranslation;
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
+
+//fire 2
 
 // Animates the secondary effect of MOVE_EMBER, where the flames grow and slide
 // horizontally a bit.
@@ -876,14 +878,15 @@ void AnimTask_EruptionLaunchRocks(u8 taskId)
     task->func = AnimTask_EruptionLaunchRocks_Step;
 }
 
-static void AnimTask_EruptionLaunchRocks_Step(u8 taskId)
+static void AnimTask_EruptionLaunchRocks_Step(u8 taskId) // animate Move_ERUPTION?
 {
     struct Task *task = &gTasks[taskId];
 
     switch (task->data[0])
     {
     case 0:
-        PrepareEruptAnimTaskData(task, task->data[15], 0x100, 0x100, 0xE0, 0x200, 32);
+        sub_80A805C(task, task->data[15], 0x100, 0x100, 0xE0, 0x200, 0x20);
+
         task->data[0]++;
     case 1:
         if (++task->data[1] > 1)
@@ -896,7 +899,7 @@ static void AnimTask_EruptionLaunchRocks_Step(u8 taskId)
                 gSprites[task->data[15]].pos2.x = -3;
         }
 
-        if (task->data[5] != B_SIDE_PLAYER)
+        if (task->data[5])
         {
             if (++task->data[3] > 4)
             {
@@ -905,7 +908,7 @@ static void AnimTask_EruptionLaunchRocks_Step(u8 taskId)
             }
         }
 
-        if(!UpdateEruptAnimTask(task))
+        if(!sub_80A80C8(task))
         {
             SetBattlerSpriteYOffsetFromYScale(task->data[15]);
             gSprites[task->data[15]].pos2.x = 0;
@@ -919,19 +922,20 @@ static void AnimTask_EruptionLaunchRocks_Step(u8 taskId)
     case 2:
         if (++task->data[1] > 4)
         {
-            if (task->data[5] != B_SIDE_PLAYER)
-                PrepareEruptAnimTaskData(task, task->data[15], 0xE0, 0x200, 0x180, 0xF0, 6);
+            if (task->data[5])
+                sub_80A805C(task, task->data[15], 0xE0, 0x200, 0x180, 0xF0, 0x6);
             else
-                PrepareEruptAnimTaskData(task, task->data[15], 0xE0, 0x200, 0x180, 0xC0, 6);
+                sub_80A805C(task, task->data[15], 0xE0, 0x200, 0x180, 0xC0, 0x6);
 
             task->data[1] = 0;
             task->data[0]++;
         }
         break;
     case 3:
-        if (!UpdateEruptAnimTask(task))
+        if (!sub_80A80C8(task))
         {
             CreateEruptionLaunchRocks(task->data[15], taskId, 6);
+
             task->data[0]++;
         }
         break;
@@ -948,10 +952,10 @@ static void AnimTask_EruptionLaunchRocks_Step(u8 taskId)
 
         if (++task->data[3] > 0x18)
         {
-            if (task->data[5] != B_SIDE_PLAYER)
-                PrepareEruptAnimTaskData(task, task->data[15], 0x180, 0xF0, 0x100, 0x100, 8);
+            if (task->data[5])
+                sub_80A805C(task, task->data[15], 0x180, 0xF0, 0x100, 0x100, 0x8);
             else
-                PrepareEruptAnimTaskData(task, task->data[15], 0x180, 0xC0, 0x100, 0x100, 8);
+                sub_80A805C(task, task->data[15], 0x180, 0xC0, 0x100, 0x100, 0x8);
 
             if (task->data[2] & 1)
                 gSprites[task->data[15]].pos2.y -= 3;
@@ -963,13 +967,14 @@ static void AnimTask_EruptionLaunchRocks_Step(u8 taskId)
         }
         break;
     case 5:
-        if (task->data[5] != B_SIDE_PLAYER)
+        if (task->data[5])
             gSprites[task->data[15]].pos1.y--;
 
-        if (!UpdateEruptAnimTask(task))
+        if (!sub_80A80C8(task))
         {
             gSprites[task->data[15]].pos1.y = task->data[4];
             ResetSpriteRotScale(task->data[15]);
+
             task->data[2] = 0;
             task->data[0]++;
         }
@@ -977,6 +982,7 @@ static void AnimTask_EruptionLaunchRocks_Step(u8 taskId)
     case 6:
         if (!task->data[6])
             DestroyAnimVisualTask(taskId);
+
         break;
     default:
         break;
@@ -1035,12 +1041,16 @@ static void AnimEruptionLaunchRock(struct Sprite *sprite)
 
 static u16 GetEruptionLaunchRockInitialYPos(u8 spriteId)
 {
-    s16 y = gSprites[spriteId].pos1.y + gSprites[spriteId].pos2.y + gSprites[spriteId].centerToCornerVecY;
+    u16 y = gSprites[spriteId].pos1.y + gSprites[spriteId].pos2.y + gSprites[spriteId].centerToCornerVecY;
 
     if (GetBattlerSide(gBattleAnimAttacker) == B_SIDE_PLAYER)
-        y += 74;
+    {
+        y = ((y << 16) + 0x4A0000) >> 16;
+    }
     else
-        y += 44;
+    {
+        y = ((y << 16) + 0x2C0000) >> 16;
+    }
 
     return y;
 }
@@ -1191,7 +1201,7 @@ static void AnimWillOWispOrb(struct Sprite *sprite)
             sprite->data[3] = sprite->pos1.y;
             sprite->data[4] = GetBattlerSpriteCoord(gBattleAnimTarget, 3);
 
-            InitAnimLinearTranslationWithSpeed(sprite);
+            sub_80A6FD4(sprite);
             sprite->callback = AnimWillOWispOrb_Step;
         }
         break;
@@ -1358,14 +1368,14 @@ static void AnimTask_MoveHeatWaveTargets_Step(u8 taskId)
     }
 }
 
-// Used to add a color mask to the battle background.
+// Used to add a color mask to the battle interface / HUD in Heat Wave.
 // arg 0: opacity
 // arg 1: color code
 void AnimTask_BlendBackground(u8 taskId)
 {
     struct BattleAnimBgData animBg;
-    GetBattleAnimBg1Data(&animBg);
-    BlendPalette(animBg.paletteId * 16, 16, gBattleAnimArgs[0], gBattleAnimArgs[1]);
+    sub_80A6B30(&animBg);
+    BlendPalette(animBg.paletteId * 16, 16, gBattleAnimArgs[0], gBattleAnimArgs[1]); // u16 palOffset, u16 numEntries, u8 coeff, u16 blendColor
     DestroyAnimVisualTask(taskId);
 }
 

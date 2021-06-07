@@ -398,7 +398,7 @@ static void DoScreenShake(u8 taskId)
 static void IncrementCeilingCrumbleFinishedCount(void)
 {
     u8 taskId = FindTaskIdByFunc(WaitCeilingCrumble);
-    if (taskId != TASK_NONE)
+    if (taskId != 0xFF)
         gTasks[taskId].data[0]++;
 }
 
@@ -610,7 +610,7 @@ static void DoMirageTowerDisintegration(u8 taskId)
     case 4:
         UnsetBgTilemapBuffer(0);
         bgShakeTaskId = FindTaskIdByFunc(UpdateBgShake);
-        if (bgShakeTaskId != TASK_NONE)
+        if (bgShakeTaskId != 0xFF)
             DestroyTask(bgShakeTaskId);
         sBgShakeOffsets->bgVOFS = sBgShakeOffsets->bgHOFS = 0;
         SetBgShakeOffsets();
